@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Bitter');
-@import url('assets/magmed/stylesheet.css');
-@import url('assets/mana-cost-master/css/mana-cost.css');
+@import url('assets/fonts/goudy/stylesheet.css');
+@import url('https://fonts.googleapis.com/css?family=Lustria');
+@import url('assets/symbols/symbols.css');
 body {
-	font: 12px Bitter;
+	font: 12px Lustria;
     background-color:lightgray;
 }
 form {
@@ -10,13 +10,13 @@ form {
 }
 
 h1 {
-    font-family: magicmedievalregular;
+    font-family: goudymedievalregular;
 }
 
 h2 {
     margin: 0;
     padding: 0;
-    font-family: magicmedievalregular;
+    font-family: goudymedievalregular;
 }
 
 .card {
@@ -29,11 +29,23 @@ h2 {
 	border-radius: 10px;
 	border-style: solid;
     border-width: 1pt;
-	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.28);
+	box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.28);
 	background: white;
 	margin: 10px;
 	float: left;
 	z-index: -1;
+}
+
+.symbol {
+    display: inline;
+    height: 0.9em;
+    width: 0.9em;
+    padding-left:0.3mm;
+    padding-right: 0.3mm;
+       filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
+    filter: url(#shadow);
+    -webkit-filter: drop-shadow(-1px 1px #000);
+    filter: drop-shadow(-1px 1px #000);
 }
 
 .W {
@@ -42,21 +54,44 @@ h2 {
 	background-size: contain;
 }
 
-span {
+.U {
+	background-color: black;
+	background-image: url('assets/frame_blue.png');
+	background-size: contain;
+}
+.B {
+	background-color: black;
+	background-image: url('assets/frame_black.png');
+	background-size: contain;
+}
+.R {
+	background-color: black;
+	background-image: url('assets/frame_red.png');
+	background-size: contain;
+}
+.G {
+	background-color: black;
+	background-image: url('assets/frame_green.png');
+	background-size: contain;
+}
+
+span, h1, h2 {
 	box-sizing: inherit;
+    text-rendering: geometricPrecision;
 }
 
 .name {
-	font-family: magicmedievalregular;
+	font-family: goudymedievalregular;
 	font-size: 3.3mm;
 	color: white;
-	text-shadow: -1px 1px 0px black;
+    text-shadow: 1px 1px 0px black;    
 	position: absolute;
 	left: 6.5mm;
 	top: 4mm;
 	display: inline-block;
 	width: 50mm;
 }
+
 .cost {
 	float: right;
 }
@@ -66,20 +101,38 @@ span {
 }
 
 .illustration {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    left:7.25mm;
+    top:8.23mm;
+    width: 47.8mm;
+    height: 38.365mm;
     background-size: contain;
+    background: white;   
 }
 
-.text {
+.types {
+    color: white;
+    font-size: 2.5mm;
+    text-shadow: 1px 1px 0px black;
     position: absolute;
-    top: 61mm;
-    width: 58.5mm;
-    left:2mm;
+    top: 47.9mm;
+    left: 7mm;
+}
+
+.text_wrapper{
+    position: absolute;
+    top: 52mm;
+    width: 48mm;
+    height: 23.7mm;
+    left:7.2mm;
     font-weight: 300;
     font-size: 7pt;
     white-space:pre-wrap;
     line-height: 9pt;
+}
+
+.text {
+    vertical-align: middle;
 }
 
 .flavor {
@@ -87,9 +140,18 @@ span {
 	font-style: italic;
 	display: inline-block;
 	margin-top: 2mm;
-    text-align: center;
+    text-align: left;
     width: 100%;
     line-height: 6pt;
+}
+
+.stats {
+    color: white;
+    font-size: 3.5mm;
+    text-shadow: 1px 1px 0px black;
+    position: absolute;
+    bottom: 6mm;
+    right: 7mm;
 }
 
 em {

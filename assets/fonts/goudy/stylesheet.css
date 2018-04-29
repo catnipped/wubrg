@@ -3,9 +3,9 @@
 
 
 @font-face {
-    font-family: 'magicmedievalregular';
-    src: url('magmed-webfont.woff2') format('woff2'),
-         url('magmed-webfont.woff') format('woff');
+    font-family: 'goudymedievalregular';
+    src: url('goudy-webfont.woff2') format('woff2'),
+         url('goudy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 

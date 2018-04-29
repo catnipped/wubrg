@@ -45,7 +45,7 @@ function addCard (id) {
 
     let text = '';
     if (card.text != undefined) {
-        text = '<span class="text">' + card.text + '<br/>'+ flavor + '</span>'
+        text = '<table class="text_wrapper"><td class="text"><span>' + card.text + '<br/>'+ flavor + '</span></td></table>'
     }
 
 		let types = '';
@@ -65,65 +65,63 @@ function addCard (id) {
 
 	let newHtml = ('<div class="card ' + color + '">' + name + illustration + types + text + stats + ' </div>');
 	$('#cards').append( newHtml );
-  replaceInlineSymbol(/\{0}/g,'<span class="mana small s0 shadow"></span>');
-  replaceInlineSymbol(/\{1}/g,'<span class="mana small s1 shadow"></span>');
-	replaceInlineSymbol(/\{2}/g,'<span class="mana small s2 shadow"></span>');
-	replaceInlineSymbol(/\{3}/g,'<span class="mana small s3 shadow"></span>');
-	replaceInlineSymbol(/\{4}/g,'<span class="mana small s4 shadow"></span>');
-	replaceInlineSymbol(/\{5}/g,'<span class="mana small s5 shadow"></span>');
-	replaceInlineSymbol(/\{6}/g,'<span class="mana small s6 shadow"></span>');
-	replaceInlineSymbol(/\{7}/g,'<span class="mana small s7 shadow"></span>');
-	replaceInlineSymbol(/\{8}/g,'<span class="mana small s8 shadow"></span>');
-	replaceInlineSymbol(/\{9}/g,'<span class="mana small s9 shadow"></span>');
-	replaceInlineSymbol(/\{10}/g,'<span class="mana small s10 shadow"></span>');
-	replaceInlineSymbol(/\{11}/g,'<span class="mana small s11 shadow"></span>');
-	replaceInlineSymbol(/\{12}/g,'<span class="mana small s12 shadow"></span>');
-	replaceInlineSymbol(/\{13}/g,'<span class="mana small s13 shadow"></span>');
-	replaceInlineSymbol(/\{14}/g,'<span class="mana small s14 shadow"></span>');
-	replaceInlineSymbol(/\{15}/g,'<span class="mana small s15 shadow"></span>');
-	replaceInlineSymbol(/\{16}/g,'<span class="mana small s16 shadow"></span>');
-	replaceInlineSymbol(/\{17}/g,'<span class="mana small s17 shadow"></span>');
-	replaceInlineSymbol(/\{18}/g,'<span class="mana small s18 shadow"></span>');
-	replaceInlineSymbol(/\{19}/g,'<span class="mana small s19 shadow"></span>');
-	replaceInlineSymbol(/\{20}/g,'<span class="mana small s20 shadow"></span>');
+    replaceInlineSymbol(/\{0}/g,'<img class="symbol" src="assets/symbols/0.svg"/>');
+    replaceInlineSymbol(/\{1}/g,'<img class="symbol" src="assets/symbols/1.svg"/>');
+	replaceInlineSymbol(/\{2}/g,'<img class="symbol" src="assets/symbols/2.svg"/>');
+	replaceInlineSymbol(/\{3}/g,'<img class="symbol" src="assets/symbols/3.svg"/>');
+	replaceInlineSymbol(/\{4}/g,'<img class="symbol" src="assets/symbols/4.svg"/>');
+	replaceInlineSymbol(/\{5}/g,'<img class="symbol" src="assets/symbols/5.svg"/>');
+	replaceInlineSymbol(/\{6}/g,'<img class="symbol" src="assets/symbols/6.svg"/>');
+	replaceInlineSymbol(/\{7}/g,'<img class="symbol" src="assets/symbols/7.svg"/>');
+	replaceInlineSymbol(/\{8}/g,'<img class="symbol" src="assets/symbols/8.svg"/>');
+	replaceInlineSymbol(/\{9}/g,'<img class="symbol" src="assets/symbols/9.svg"/>');
+	replaceInlineSymbol(/\{10}/g,'<img class="symbol" src="assets/symbols/10.svg"/>');
+	replaceInlineSymbol(/\{11}/g,'<img class="symbol" src="assets/symbols/11.svg"/>');
+	replaceInlineSymbol(/\{12}/g,'<img class="symbol" src="assets/symbols/12.svg"/>');
+	replaceInlineSymbol(/\{13}/g,'<img class="symbol" src="assets/symbols/13.svg"/>');
+	replaceInlineSymbol(/\{14}/g,'<img class="symbol" src="assets/symbols/14.svg"/>');
+	replaceInlineSymbol(/\{15}/g,'<img class="symbol" src="assets/symbols/15.svg"/>');
+	replaceInlineSymbol(/\{16}/g,'<img class="symbol" src="assets/symbols/16.svg"/>');
+	replaceInlineSymbol(/\{17}/g,'<img class="symbol" src="assets/symbols/17.svg"/>');
+	replaceInlineSymbol(/\{18}/g,'<img class="symbol" src="assets/symbols/18.svg"/>');
+	replaceInlineSymbol(/\{19}/g,'<img class="symbol" src="assets/symbols/19.svg"/>');
+	replaceInlineSymbol(/\{20}/g,'<img class="symbol" src="assets/symbols/20.svg"/>');
 
-	replaceInlineSymbol(/\{X}/g,'<span class="mana small sx shadow"></span>');
-	replaceInlineSymbol(/\{Y}/g,'<span class="mana small sy shadow"></span>');
-	replaceInlineSymbol(/\{Z}/g,'<span class="mana small sz shadow"></span>');
+	replaceInlineSymbol(/\{X}/g,'<img class="symbol" src="assets/symbols/X.svg"/>');
 
-	replaceInlineSymbol(/\{C}/g,'<span class="mana small sc shadow"></span>');
+	replaceInlineSymbol(/\{C}/g,'<img class="symbol" src="assets/symbols/C.svg"/>');
 
-	replaceInlineSymbol(/\{S}/g,'<span class="mana small ss shadow"></span>');
+	replaceInlineSymbol(/\{S}/g,'<img class="symbol" src="assets/symbols/S.svg"/>');
 
-	replaceInlineSymbol(/\{W}/g,'<span class="mana small sw shadow"></span>');
-	replaceInlineSymbol(/\{U}/g,'<span class="mana small su shadow"></span>');
-	replaceInlineSymbol(/\{R}/g,'<span class="mana small sr shadow"></span>');
-	replaceInlineSymbol(/\{B}/g,'<span class="mana small sb shadow"></span>');
-	replaceInlineSymbol(/\{G}/g,'<span class="mana small sg shadow"></span>');
+	replaceInlineSymbol(/\{W}/g,'<img class="symbol" src="assets/symbols/W.svg"/>');
+	replaceInlineSymbol(/\{U}/g,'<img class="symbol" src="assets/symbols/U.svg"/>');
+	replaceInlineSymbol(/\{R}/g,'<img class="symbol" src="assets/symbols/R.svg"/>');
+	replaceInlineSymbol(/\{B}/g,'<img class="symbol" src="assets/symbols/B.svg"/>');
+	replaceInlineSymbol(/\{G}/g,'<img class="symbol" src="assets/symbols/G.svg"/>');
 
-	replaceInlineSymbol(/\{WU}/g,'<span class="mana small swu shadow"></span>');
-	replaceInlineSymbol(/\{WB}/g,'<span class="mana small swb shadow"></span>');
-	replaceInlineSymbol(/\{UB}/g,'<span class="mana small sub shadow"></span>');
-	replaceInlineSymbol(/\{UR}/g,'<span class="mana small sur shadow"></span>');
-	replaceInlineSymbol(/\{BR}/g,'<span class="mana small sbr shadow"></span>');
-	replaceInlineSymbol(/\{BG}/g,'<span class="mana small sbg shadow"></span>');
-	replaceInlineSymbol(/\{RW}/g,'<span class="mana small srw shadow"></span>');
-	replaceInlineSymbol(/\{GW}/g,'<span class="mana small sgw shadow"></span>');
-	replaceInlineSymbol(/\{GU}/g,'<span class="mana small sgu shadow"></span>');
-	replaceInlineSymbol(/\{2W}/g,'<span class="mana small s2w shadow"></span>');
-	replaceInlineSymbol(/\{2U}/g,'<span class="mana small s2u shadow"></span>');
-	replaceInlineSymbol(/\{2B}/g,'<span class="mana small s2b shadow"></span>');
-	replaceInlineSymbol(/\{2R}/g,'<span class="mana small s2r shadow"></span>');
-	replaceInlineSymbol(/\{2G}/g,'<span class="mana small s2g shadow"></span>');
-	replaceInlineSymbol(/\{WP}/g,'<span class="mana small swp shadow"></span>');
-	replaceInlineSymbol(/\{UP}/g,'<span class="mana small sup shadow"></span>');
-	replaceInlineSymbol(/\{BP}/g,'<span class="mana small sbp shadow"></span>');
-	replaceInlineSymbol(/\{RP}/g,'<span class="mana small srp shadow"></span>');
-	replaceInlineSymbol(/\{GP}/g,'<span class="mana small sgp shadow"></span>');
+	replaceInlineSymbol(/\{WU}/g,'<img class="symbol" src="assets/symbols/WU.svg"/>');
+	replaceInlineSymbol(/\{WB}/g,'<img class="symbol" src="assets/symbols/WB.svg"/>');
+	replaceInlineSymbol(/\{UB}/g,'<img class="symbol" src="assets/symbols/UB.svg"/>');
+	replaceInlineSymbol(/\{UR}/g,'<img class="symbol" src="assets/symbols/UR.svg"/>');
+	replaceInlineSymbol(/\{BR}/g,'<img class="symbol" src="assets/symbols/BR.svg"/>');
+	replaceInlineSymbol(/\{BG}/g,'<img class="symbol" src="assets/symbols/BG.svg"/>');
+	replaceInlineSymbol(/\{RW}/g,'<img class="symbol" src="assets/symbols/RW.svg"/>');
+	replaceInlineSymbol(/\{GW}/g,'<img class="symbol" src="assets/symbols/GW.svg"/>');
+	replaceInlineSymbol(/\{GU}/g,'<img class="symbol" src="assets/symbols/GU.svg"/>');
+	replaceInlineSymbol(/\{2W}/g,'<img class="symbol" src="assets/symbols/2W.svg"/>');
+	replaceInlineSymbol(/\{2U}/g,'<img class="symbol" src="assets/symbols/2U.svg"/>');
+	replaceInlineSymbol(/\{2B}/g,'<img class="symbol" src="assets/symbols/2B.svg"/>');
+	replaceInlineSymbol(/\{2R}/g,'<img class="symbol" src="assets/symbols/2R.svg"/>');
+	replaceInlineSymbol(/\{2G}/g,'<img class="symbol" src="assets/symbols/2G.svg"/>');
+	replaceInlineSymbol(/\{WP}/g,'<img class="symbol" src="assets/symbols/WP.svg"/>');
+	replaceInlineSymbol(/\{UP}/g,'<img class="symbol" src="assets/symbols/UP.svg"/>');
+	replaceInlineSymbol(/\{BP}/g,'<img class="symbol" src="assets/symbols/BP.svg"/>');
+	replaceInlineSymbol(/\{RP}/g,'<img class="symbol" src="assets/symbols/RP.svg"/>');
+	replaceInlineSymbol(/\{GP}/g,'<img class="symbol" src="assets/symbols/GP.svg"/>');
 
-	replaceInlineSymbol(/\{T}/g,'<span class="mana small st shadow"></span>');
-	replaceInlineSymbol(/\{Q}/g,'<span class="mana small sq shadow"></span>');
-	replaceInlineSymbol(/\{E}/g,'<span class="mana small se shadow"></span>');
+	replaceInlineSymbol(/\{T}/g,'<img class="symbol" src="assets/symbols/T.svg"/>');
+	replaceInlineSymbol(/\{Q}/g,'<img class="symbol" src="assets/symbols/Q.svg"/>');
+	replaceInlineSymbol(/\{E}/g,'<img class="symbol" src="assets/symbols/E.svg"/>');
 
   replaceInlineSymbol(/\undefined/g,'');
   replaceInlineSymbol(/\n/g,'<hr>');
@@ -150,7 +148,7 @@ function submitCards() {
 };
 
 function showAllCards() {
-	for (let i = 10; i < (35) ; i++) {
+	for (let i = 100; i < (130) ; i++) {
 			addCard(i);
 			dynamicTextHeight(i);
 	};
