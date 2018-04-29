@@ -1,183 +1,132 @@
 let carddata = new Object();
 
+$(document).ready(function() {
+	fetchCardData();
+	showAllCards();
+});
+
 function fetchCardData() {
-	$.ajax({
-	    url:'https://api.fiveringsdb.com/cards',
-	    type:'GET',
-	    async: true,
-	    error: function() {
-            console.log("error: can't fetch from fiveringsdb");
-            carddata = "empty"
-        },
-	    success: function(data) {
-            carddata = data;
-            console.log(data);
-	    }
+	$.getJSON('assets/USG.json', function(data){
+		carddata = data.cards;
 	});
 };
 
-
-function getCard(id) {
-    return carddata.records[id];
-}
-
 function addCard (id) {
     let cardnr = undefined;
-    for (let i = 0; i < (carddata.size - 1) ; i++) {
-        if (carddata.records[i].id == id || carddata.records[i].name == id || carddata.records[i].name_canonical == id) {
-            cardnr = i;
-            break;
-        };
-    };
+    // for (let i = 0; i < (carddata.size - 1) ; i++) {
+    //     if (carddata.records[i].id == id || carddata.records[i].name == id || carddata.records[i].name_canonical == id) {
+    //         cardnr = i;
+    //         break;
+    //     };
+    // };
 
-    let card = getCard(cardnr);
+    let card = carddata[id];
     console.log(card);
 
-    let uniqueness = '';
-	if (card.unicity) {
-		uniqueness = '❃ '
-	};
-
-    let clan_svg = '<img class="title_clan"  src="https://fiveringsdb.com/static/svg/clan/' + card.clan + '.svg" </>'
-
-    let clan_textbox_svg = '<img class="text_clan"  src="https://fiveringsdb.com/static/svg/clan/' + card.clan + '.svg" </>'
-
-    let set = card.pack_cards[0].pack.id[0];
-    for (let i=0; i < card.pack_cards[0].pack.id.length ; i++) {
-         if (card.pack_cards[0].pack.id[i] == '-') {
-            set = set + card.pack_cards[0].pack.id[i+1];
-         }
-    };
+		let illustration = '';
+		if (card.imageName != undefined) {
+			illustration = '<div class="illustration" style="background-image: url( ' + card.imageName + ');"></div>'
+		};
 
     let flavor = '';
-    if (card.pack_cards[0].flavor != undefined ) {
-        flavor = '<span class="flavor">' + card.pack_cards[0].flavor + '</span>'
+    if (card.flavor != undefined ) {
+        flavor = '<span class="flavor">' + card.flavor + '</span>'
     };
 
     let cost = '';
-    if (card.cost != undefined) {
-        cost = '<div class="top_symbol">🌸</div><span class="cost">' + card.cost + '</span>'
+    if (card.manaCost != undefined) {
+        cost = '<span class="cost">' + card.manaCost + '</span>'
     };
 
-    let glory = '';
-    if (card.glory != undefined) {
-        glory = '<span class="glory">' + card.glory + '</span>'
-    };
+		let stats = '';
+		if (card.power != undefined && card.toughness != undefined) {
+			stats = '<span class="stats">' + card.power + '/' + card.toughness + '</span>';
+		}
 
-    let military = '';
-    let political = '';
-
-    if (card.type == 'character') {
-        military = '<span class="military">-</span>'
-         political = '<span class="political">-</span>'
-    };
-
-    if (card.military != undefined) {
-        military = '<span class="military">' + card.military + '</span>'
-    };
-
-    if (card.political != undefined) {
-        political = '<span class="political">' + card.political + '</span>'
-    };
-
-
-
-    let military_bonus = '';
-    if (card.military_bonus != undefined) {
-        military_bonus = '<span class="military_bonus">' + card.military_bonus + '</span>'
-    };
-
-    let political_bonus = '';
-    if (card.political_bonus != undefined) {
-        political_bonus = '<span class="political_bonus">' + card.political_bonus + '</span>'
-    };
-
-
-    let element = '';
-    if (card.element == 'fire') {
-        element = '<img class="element" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/3/30/Fire.png">'
-    };
-    if (card.element == 'air') {
-        element = '<img class="element" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/5/5f/Air.png">'
-    };
-
-     if (card.element == 'water') {
-        element = '<img class="element" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/9/9d/Water.png">'
-    };
-
-     if (card.element == 'earth') {
-        element = '<img class="element" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/1/1e/Earth.png">'
-    };
-
-     if (card.element == 'void') {
-        element = '<img class="element" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/4/46/Void.png">'
-    };
-
-    let strength = '';
-    if (card.strength != undefined) {
-        strength = '<div class="top_symbol">🏯</div><span class="strength">' + card.strength + '</span>'
-    };
-
-    let strength_bonus = '';
-    if (card.strength_bonus != undefined) {
-        strength_bonus = '<div class="top_symbol">🏯</div><span class="strength_bonus">' + card.strength_bonus + '</span>'
-    };
-
-    let influence = '';
-    if (card.influence_cost != undefined) {
-        for (let i=0; i < card.influence_cost ; i++) {
-            influence = influence + '🎋';
-        };
-        influence = '<span class="influence">' + influence + ' </span>'
-    }
-
-    let influence_pool = '';
-    if (card.influence_pool != undefined) {
-        influence_pool = '<span class="influence_pool">🎋' + card.influence_pool + '</span>'
-    }
-
-    let fate = '';
-    if (card.fate != undefined) {
-        fate = '<div class="stronghold_symbol">🌸</div><span class="fate">+' + card.fate + '</span>'
-    }
-
-    let honor = '';
-    if (card.honor != undefined) {
-        honor = '<div class="stronghold_symbol"></div><span class="honor">💮' + card.honor + '</span>'
-    }
-
-    let traits = '';
-    if (card.traits != undefined) {
-        for (let i=0; i < card.traits.length ; i++) {
-            traits = traits + card.traits[i] + '. ';
-        }
-        traits = '<span class="traits">' + traits + '</span>'
-    };
-    let text = ''
+    let text = '';
     if (card.text != undefined) {
         text = '<span class="text">' + card.text + '<br/>'+ flavor + '</span>'
     }
 
+		let types = '';
+		if (card.type != undefined) {
+				types = '<span class="types">' + card.type +'</span>'
+		}
 
-	let newHtml = ('<div class="card ' + card.type + '"><div class="illustration" style="background-image: url( ' + card.pack_cards[0].image_url + ');"></div><div class="clan_top ' + card.clan + '"></div><div class="clan_bottom ' + card.clan + '"></div><img class="template" src="'+ card.type + '.svg"><span class="title">' + uniqueness + card.name  + '</span>' + clan_svg + cost + strength + strength_bonus + '<span class="type">' + card.type + '</span>' + military + military_bonus + political + political_bonus + clan_textbox_svg + glory + traits + text + '<span class="artist">illus. ' + card.pack_cards[0].illustrator + '</span>' + fate + honor + influence_pool + element  +'<span class="setid">' + influence + set + ':' + card.pack_cards[0].position + '</span>');
+		let name = '';
+		if (card.name != undefined) {
+				name = '<span class="name">' + card.name + cost +'</span>'
+		}
+
+		let color = '';
+		if (card.colorIdentity != undefined) {
+			color = card.colorIdentity
+		}
+
+	let newHtml = ('<div class="card ' + color + '">' + name + illustration + types + text + stats + ' </div>');
 	$('#cards').append( newHtml );
-    replaceInlineSymbol(/\[conflict-military]/g,'<img class="inline-symbol" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/8/86/Military.png" />');
-    replaceInlineSymbol(/\[conflict-political]/g,'<img class="inline-symbol" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/e/e3/Political.png" />');
-    replaceInlineSymbol(/\[element-air]/g,'<img class="inline-symbol" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/5/5f/Air.png" />');
-    replaceInlineSymbol(/\[element-water]/g,'<img class="inline-symbol" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/9/9d/Water.png" />');
-    replaceInlineSymbol(/\[element-void]/g,'<img class="inline-symbol" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/4/46/Void.png" />');
-    replaceInlineSymbol(/\[element-earth]/g,'<img class="inline-symbol" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/1/1e/Earth.png" />');
-    replaceInlineSymbol(/\[element-fire]/g,'<img class="inline-symbol" src="https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/3/30/Fire.png" />');
-    replaceInlineSymbol(/\[clan-lion]/g,'<img class="inline-symbol" src="https://fiveringsdb.com/static/svg/clan/lion.svg" />');
-    replaceInlineSymbol(/\[clan-unicorn]/g,'<img class="inline-symbol" src="https://fiveringsdb.com/static/svg/clan/unicorn.svg" />');
-    replaceInlineSymbol(/\[clan-crab]/g,'<img class="inline-symbol" src="https://fiveringsdb.com/static/svg/clan/crab.svg" />');
-    replaceInlineSymbol(/\[clan-crane]/g,'<img class="inline-symbol" src="https://fiveringsdb.com/static/svg/clan/crane.svg" />');
-    replaceInlineSymbol(/\[clan-phoenix]/g,'<img class="inline-symbol" src="https://fiveringsdb.com/static/svg/clan/phoenix.svg" />');
-    replaceInlineSymbol(/\[clan-dragon]/g,'<img class="inline-symbol" src="https://fiveringsdb.com/static/svg/clan/dragon.svg" />');
-    replaceInlineSymbol(/\[clan-scorpion]/g,'<img class="inline-symbol" src="https://fiveringsdb.com/static/svg/clan/scorpion.svg" />');
-    replaceInlineSymbol(/\[clan-neutral]/g,'<img class="inline-symbol" src="https://fiveringsdb.com/static/svg/clan/neutral.svg" />');
-    replaceInlineSymbol(/\undefined/g,'');
-    replaceInlineSymbol(/\n/g,'<hr>');
+  replaceInlineSymbol(/\{0}/g,'<span class="mana small s0 shadow"></span>');
+  replaceInlineSymbol(/\{1}/g,'<span class="mana small s1 shadow"></span>');
+	replaceInlineSymbol(/\{2}/g,'<span class="mana small s2 shadow"></span>');
+	replaceInlineSymbol(/\{3}/g,'<span class="mana small s3 shadow"></span>');
+	replaceInlineSymbol(/\{4}/g,'<span class="mana small s4 shadow"></span>');
+	replaceInlineSymbol(/\{5}/g,'<span class="mana small s5 shadow"></span>');
+	replaceInlineSymbol(/\{6}/g,'<span class="mana small s6 shadow"></span>');
+	replaceInlineSymbol(/\{7}/g,'<span class="mana small s7 shadow"></span>');
+	replaceInlineSymbol(/\{8}/g,'<span class="mana small s8 shadow"></span>');
+	replaceInlineSymbol(/\{9}/g,'<span class="mana small s9 shadow"></span>');
+	replaceInlineSymbol(/\{10}/g,'<span class="mana small s10 shadow"></span>');
+	replaceInlineSymbol(/\{11}/g,'<span class="mana small s11 shadow"></span>');
+	replaceInlineSymbol(/\{12}/g,'<span class="mana small s12 shadow"></span>');
+	replaceInlineSymbol(/\{13}/g,'<span class="mana small s13 shadow"></span>');
+	replaceInlineSymbol(/\{14}/g,'<span class="mana small s14 shadow"></span>');
+	replaceInlineSymbol(/\{15}/g,'<span class="mana small s15 shadow"></span>');
+	replaceInlineSymbol(/\{16}/g,'<span class="mana small s16 shadow"></span>');
+	replaceInlineSymbol(/\{17}/g,'<span class="mana small s17 shadow"></span>');
+	replaceInlineSymbol(/\{18}/g,'<span class="mana small s18 shadow"></span>');
+	replaceInlineSymbol(/\{19}/g,'<span class="mana small s19 shadow"></span>');
+	replaceInlineSymbol(/\{20}/g,'<span class="mana small s20 shadow"></span>');
+
+	replaceInlineSymbol(/\{X}/g,'<span class="mana small sx shadow"></span>');
+	replaceInlineSymbol(/\{Y}/g,'<span class="mana small sy shadow"></span>');
+	replaceInlineSymbol(/\{Z}/g,'<span class="mana small sz shadow"></span>');
+
+	replaceInlineSymbol(/\{C}/g,'<span class="mana small sc shadow"></span>');
+
+	replaceInlineSymbol(/\{S}/g,'<span class="mana small ss shadow"></span>');
+
+	replaceInlineSymbol(/\{W}/g,'<span class="mana small sw shadow"></span>');
+	replaceInlineSymbol(/\{U}/g,'<span class="mana small su shadow"></span>');
+	replaceInlineSymbol(/\{R}/g,'<span class="mana small sr shadow"></span>');
+	replaceInlineSymbol(/\{B}/g,'<span class="mana small sb shadow"></span>');
+	replaceInlineSymbol(/\{G}/g,'<span class="mana small sg shadow"></span>');
+
+	replaceInlineSymbol(/\{WU}/g,'<span class="mana small swu shadow"></span>');
+	replaceInlineSymbol(/\{WB}/g,'<span class="mana small swb shadow"></span>');
+	replaceInlineSymbol(/\{UB}/g,'<span class="mana small sub shadow"></span>');
+	replaceInlineSymbol(/\{UR}/g,'<span class="mana small sur shadow"></span>');
+	replaceInlineSymbol(/\{BR}/g,'<span class="mana small sbr shadow"></span>');
+	replaceInlineSymbol(/\{BG}/g,'<span class="mana small sbg shadow"></span>');
+	replaceInlineSymbol(/\{RW}/g,'<span class="mana small srw shadow"></span>');
+	replaceInlineSymbol(/\{GW}/g,'<span class="mana small sgw shadow"></span>');
+	replaceInlineSymbol(/\{GU}/g,'<span class="mana small sgu shadow"></span>');
+	replaceInlineSymbol(/\{2W}/g,'<span class="mana small s2w shadow"></span>');
+	replaceInlineSymbol(/\{2U}/g,'<span class="mana small s2u shadow"></span>');
+	replaceInlineSymbol(/\{2B}/g,'<span class="mana small s2b shadow"></span>');
+	replaceInlineSymbol(/\{2R}/g,'<span class="mana small s2r shadow"></span>');
+	replaceInlineSymbol(/\{2G}/g,'<span class="mana small s2g shadow"></span>');
+	replaceInlineSymbol(/\{WP}/g,'<span class="mana small swp shadow"></span>');
+	replaceInlineSymbol(/\{UP}/g,'<span class="mana small sup shadow"></span>');
+	replaceInlineSymbol(/\{BP}/g,'<span class="mana small sbp shadow"></span>');
+	replaceInlineSymbol(/\{RP}/g,'<span class="mana small srp shadow"></span>');
+	replaceInlineSymbol(/\{GP}/g,'<span class="mana small sgp shadow"></span>');
+
+	replaceInlineSymbol(/\{T}/g,'<span class="mana small st shadow"></span>');
+	replaceInlineSymbol(/\{Q}/g,'<span class="mana small sq shadow"></span>');
+	replaceInlineSymbol(/\{E}/g,'<span class="mana small se shadow"></span>');
+
+  replaceInlineSymbol(/\undefined/g,'');
+  replaceInlineSymbol(/\n/g,'<hr>');
 }
 
 function replaceInlineSymbol (symbol, symbol_img) {
@@ -199,6 +148,13 @@ function submitCards() {
         dynamicTextHeight(i);
     };
 };
+
+function showAllCards() {
+	for (let i = 10; i < (35) ; i++) {
+			addCard(i);
+			dynamicTextHeight(i);
+	};
+}
 
 function dynamicTextHeight(id) {
     if ($('#cards div:nth-child('+id+') span.text').height() > 85) {
