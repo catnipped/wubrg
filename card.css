@@ -5,6 +5,9 @@ body {
 	font: 12px Lustria;
     background-color:lightgray;
 }
+img {
+    shape-rendering: crispEdges;
+}
 form {
     max-width: 600px
 }
@@ -39,7 +42,7 @@ h2 {
 .symbol {
     display: inline;
     height: 0.9em;
-    width: 0.9em;
+    width: auto;
     padding-left:0.3mm;
     padding-right: 0.3mm;
        filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
@@ -87,7 +90,7 @@ span, h1, h2 {
     text-shadow: 1px 1px 0px black;    
 	position: absolute;
 	left: 6.5mm;
-	top: 4mm;
+	top: 4.2mm;
 	display: inline-block;
 	width: 50mm;
 }
