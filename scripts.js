@@ -148,21 +148,24 @@ function submitCards() {
 };
 
 function showAllCards() {
-	for (let i = 100; i < (130) ; i++) {
+	for (let i = 70; i < (100) ; i++) {
 			addCard(i);
 			dynamicTextHeight(i);
 	};
 }
 
 function dynamicTextHeight(id) {
-    if ($('#cards div:nth-child('+id+') span.text').height() > 85) {
-        let current_height = $('#cards div:nth-child('+id+') span.text').css('line-height');
+    if ($('.card:last-of-type .text span:first-child').height() > 90) {
+        let current_height = $('.card:last-of-type .text span:first-child').css('line-height');
         current_height = current_height[0]+current_height[1];
         current_height = parseInt(current_height);
         current_height = current_height - 1;
         console.log(current_height);
-        $('#cards div:nth-child('+id+') span.text').css('line-height', current_height + 'px');
-        $('#cards div:nth-child('+id+') span.text.flavor').css('line-height', (current_height-1) + 'px');
+        $('.card:last-of-type .text span:first-child').css('line-height', current_height + 'px');
+        $('.card:last-of-type .text span.flavor').css('line-height', (current_height-1) + 'px');
+      
+        $('.card:last-of-type .text span:first-child').css('font-size', '6pt');
+        $('.card:last-of-type .text span:first-child.flavor').css('font-size', '5px');
         dynamicTextHeight(id);
     }
 };
