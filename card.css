@@ -1,0 +1,510 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter');
+@import url('assets/magmed/stylesheet.css');
+@import url('assets/mana-cost-master/css/mana-cost.css');
+body {
+	font: 12px Bitter;
+    background-color:aliceblue;
+}
+form {
+    max-width: 600px
+}
+
+h1 {
+    font-family: magicmedievalregular;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    font-family: magicmedievalregular;
+}
+
+.card {
+	width: 63mm;
+	height: 88mm;
+	position: relative;
+	overflow: hidden;
+	border-radius: 10px;
+	border-style: solid;
+    border-width: 1pt;
+	box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.28);
+	background: white;
+	margin: 10px;
+	float: left;
+	z-index: -1;
+}
+
+.illustration {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+}
+
+.clan_top {
+    background: pink;
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 7mm;
+}
+
+.clan_bottom {
+    background: pink;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    height: 7mm;
+}
+
+.scorpion {
+    background: #A95A41;
+}
+
+.dragon {
+    background: #3E755E;
+}
+
+.phoenix {
+    background: #BF8455;
+}
+
+.unicorn {
+    background: #755883;
+}
+
+.crane {
+    background: #768EA1;
+}
+
+.lion {
+    background: #BEAA61;
+}
+
+.crab {
+    background: #5D6680;
+}
+
+.neutral {
+    background: dimgray;
+}
+
+.template {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.cost, .strength, .strength_bonus {
+    position: absolute;
+    top:0.7mm;
+    left: 1mm;
+    width: 8mm;
+    text-align: center;
+    font-family: kalam;
+    font-size: 18pt;
+    color:white;
+    text-shadow: 0 0 1mm black;
+}
+
+
+.top_symbol {
+    position: absolute;
+    font-size: 24pt;
+    top:0.1mm;
+    left:1mm;
+}
+
+.glory {
+    position: absolute;
+    bottom:28mm;
+    right: 2.5mm;
+    width: 10mm;
+    text-align: center;
+    font-family: kalam;
+    font-size: 18pt;
+    color: rgb(60,60,60);
+    background: url(https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/2/2c/Glory.png) ;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.title {
+    position: absolute;
+    font-family: julee;
+    top: 2.4mm;
+    font-size: 12pt;
+    left: 9mm;
+    width: 44mm;
+    text-align: center;
+    line-height: 18pt;
+}
+
+.title_clan {
+    position: absolute;
+    top:1mm;
+    height: 9mm;
+    right: 1mm;
+}
+
+.type {
+    font-family: "Martel";
+    font-size: 5pt;
+    color: white;
+    position: absolute;
+    font-variant: small-caps;
+    top: 9.3mm;
+    left: 1mm;
+}
+
+.military, .military_bonus {
+    position: absolute;
+    top:13mm;
+    left: 1.5mm;
+    font-family: kalam;
+    font-size: 18pt;
+    text-shadow: 0 0 2mm white;
+    text-align: center;
+    background: url(https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/8/86/Military.png) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 7mm;
+    height: 8mm;
+    color: #742E31;
+}
+
+.political, .political_bonus {
+    position: absolute;
+    top:22mm;
+    left: 1.5mm;
+    font-family: kalam;
+    font-size: 18pt;
+    text-shadow: 0 0 2mm white;
+    text-align: center;
+    background: url(https://d1u5p3l4wpay3k.cloudfront.net/l5r_gamepedia_en/e/e3/Political.png) ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 7mm;
+    height: 8mm;
+    color: #053649;
+}
+
+.political_bonus::first-letter, .military_bonus::first-letter, .strength_bonus::first-letter, .fate::first-letter {
+    font-size: 11pt;
+    float: left;
+    margin-right: -1.5mm;
+}
+
+.text_clan {
+    position: absolute;
+    height: 30mm;
+    width: 30mm;
+    bottom: -2mm;
+    left: 4mm;
+    opacity: 0.3;
+    filter: grayscale(1)
+}
+
+.traits {
+    position: absolute;
+    bottom: 28.5mm;
+    left: 0;
+    font-size: 6.5pt;
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: 800;
+}
+
+.text {
+    position: absolute;
+    top: 61mm;
+    width: 58.5mm;
+    left:2mm;
+    font-weight: 300;
+    font-size: 7pt;
+    white-space:pre-wrap;
+    line-height: 9pt;
+}
+
+.flavor {
+    font-size: 6pt;
+	font-style: italic;
+	display: inline-block;
+	margin-top: 2mm;
+    text-align: center;
+    width: 100%;
+    line-height: 6pt;
+}
+
+.artist {
+    position: absolute;
+    bottom: 0;
+    font-family: Martel;
+    font-size: 5pt;
+    left: 3mm;
+    text-transform: uppercase;
+    color: white;
+}
+
+.setid {
+    position: absolute;
+    bottom: 0;
+    right:3mm;
+    font-family: Martel;
+    font-size: 5pt;
+    text-transform: uppercase;
+    color: white;
+}
+
+.fate {
+    position: absolute;
+    bottom:2mm;
+    left: 26mm;
+    width: 8mm;
+    text-align: center;
+    font-family: kalam;
+    font-size: 18pt;
+    color:white;
+    text-shadow: 0 0 1mm black;
+}
+
+.honor {
+    position: absolute;
+    bottom: 4.5mm;
+    left: 3mm;
+    font-size: 12pt;
+    color: black;
+    font-family: kalam;
+}
+
+.influence_pool {
+    position: absolute;
+    bottom: 4.5mm;
+    right: 4.5mm;
+    font-size: 12pt;
+    color: black;
+    font-family: kalam;
+}
+
+.stronghold_symbol {
+    position: absolute;
+    font-size: 24pt;
+    bottom:2mm;
+    left:26mm;
+}
+
+.inline-symbol {
+    height:8pt;
+    margin-top: -3pt;
+    margin-bottom: -3pt;
+    vertical-align: middle;
+    filter: grayscale(1) brightness(0.0);
+}
+
+em {
+    font-weight: 800;
+}
+
+hr {
+margin: 1pt;
+opacity: 0;
+}
+
+.flavor hr {
+   margin: 0;
+}
+
+
+.low-ink .illustration, .low-ink .honor, .low-ink .influence_pool, .low-ink .stronghold_symbol, .low-ink .top_symbol, .low-ink .glory, .low-ink .title_clan, .low-ink .military, .low-ink .military_bonus, .low-ink .political, .low-ink .political_bonus {
+    filter: grayscale(1) contrast(0.8) brightness(1.2);
+    color: black;
+}
+
+.low-ink .clan_top, .low-ink .clan_bottom {
+    background-color: lightgray;
+}
+
+.low-ink .setid, .low-ink .artist {
+    color: black;
+}
+
+.attachment .clan_top  {
+    display: none;
+}
+
+.attachment .text, .attachment .traits {
+    width: 50mm;
+    left: 11mm
+}
+
+.attachment .text_clan {
+    left: 32mm;
+}
+
+.attachment .title {
+    transform: rotate(-90deg);
+    left:-16.7mm;
+    top: 51mm;
+}
+
+.attachment .title_clan {
+    transform: rotate(-90deg);
+    left: 0.5mm;
+    top:75.4mm
+}
+
+.attachment .type {
+    left:0.5mm;
+}
+
+.event .clan_top {
+    transform:rotate(-13.5deg);
+    top:-7.5mm;
+    left:-3mm;
+}
+
+.event .title {
+    top: 48.2mm;
+}
+
+.event .title_clan {
+    top: 46.7mm;
+    right: 3mm;
+}
+
+.event .type {
+    left: 2.9mm
+}
+
+.holding .clan_top {
+    height: 29mm;
+}
+
+.holding .clan_bottom {
+    height: 5mm;
+}
+
+.holding .traits {
+    width: 47.5mm;
+    left: 12mm;
+    top:2.5mm
+}
+
+.holding .text {
+    width: 47.5mm;
+    left: 12mm;
+    top:6mm
+}
+
+.holding .text_clan {
+    left: 32mm;
+    top:4mm
+}
+
+.holding .title {
+    transform: rotate(-90deg);
+    left:-17mm;
+    top: 32mm;
+}
+
+.holding .title_clan {
+    transform: rotate(-90deg);
+    left: 0.7mm;
+    top:58mm
+}
+
+.holding .type {
+    left:2mm;
+}
+
+.province .type {
+    left:1.5mm;
+}
+
+.province .text_clan {
+    top:16mm;
+    left:4.8mm;
+}
+
+.province .traits {
+    top: 12mm
+}
+
+.province .text {
+    top: 16mm;
+    left: 5mm;
+    width: 54mm
+}
+
+.province .clan_top {
+    height: 38mm
+}
+
+.province .clan_bottom {
+    height: 4.5mm;
+}
+
+.province .setid {
+    color: black;
+    right: 13mm;
+}
+
+.province .element {
+    width: 6mm;
+    height: auto;
+    position: absolute;
+    bottom: 1mm;
+    right:1mm;
+}
+
+.stronghold .traits {
+    top: 52mm
+}
+
+.stronghold .text {
+    top: 55.5mm;
+    left: 3mm;
+    width: 57mm;
+}
+.stronghold .text_clan {
+    bottom: 2mm
+}
+
+.stronghold .type {
+    left: 0.5mm;
+}
+
+@media print {
+    body {
+        background: white;
+        margin: -2mm -2mm
+    }
+
+	.card {
+		box-shadow: none;
+		border: 1px dashed black;
+        border-radius: 0;
+        margin: 0;
+        page-break-inside: avoid;
+	}
+
+
+	form {
+		display: none;
+	}
+}
+
+@page
+{
+    size: A4;   /* auto is the initial value */
+
+    /* this affects the margin in the printer settings */
+    margin: 0mm 0mm 0mm 0mm;
+}
