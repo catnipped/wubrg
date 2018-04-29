@@ -6,7 +6,7 @@ $(document).ready(function() {
 });
 
 function fetchCardData() {
-	$.getJSON('assets/USG.json', function(data){
+	$.getJSON('assets/DOM.json', function(data){
 		carddata = data.cards;
 	});
 };
@@ -58,9 +58,13 @@ function addCard (id) {
 				name = '<span class="name">' + card.name + cost +'</span>'
 		}
 
-		let color = '';
-		if (card.colorIdentity != undefined) {
-			color = card.colorIdentity
+		let color = 'Artifact';
+		if (card.colors != undefined) {
+            if (card.colors.length > 1) {
+                color = 'Gold'
+            } else {
+			 color = card.colors
+            }
 		}
 
 	let newHtml = ('<div class="card ' + color + '">' + name + illustration + types + text + stats + ' </div>');
@@ -122,7 +126,8 @@ function addCard (id) {
 	replaceInlineSymbol(/\{T}/g,'<img class="symbol" src="assets/symbols/T.svg"/>');
 	replaceInlineSymbol(/\{Q}/g,'<img class="symbol" src="assets/symbols/Q.svg"/>');
 	replaceInlineSymbol(/\{E}/g,'<img class="symbol" src="assets/symbols/E.svg"/>');
-
+    replaceInlineSymbol(/\(/g,'<i>(');
+    replaceInlineSymbol(/\)/g,')</i>');
   replaceInlineSymbol(/\undefined/g,'');
   replaceInlineSymbol(/\n/g,'<hr>');
 }
@@ -148,14 +153,14 @@ function submitCards() {
 };
 
 function showAllCards() {
-	for (let i = 70; i < (100) ; i++) {
+	for (let i = 150; i < (200) ; i++) {
 			addCard(i);
 			dynamicTextHeight(i);
 	};
 }
 
 function dynamicTextHeight(id) {
-    if ($('.card:last-of-type .text span:first-child').height() > 90) {
+    if ($('.card:last-of-type .text span:first-child').height() > 85) {
         let current_height = $('.card:last-of-type .text span:first-child').css('line-height');
         current_height = current_height[0]+current_height[1];
         current_height = parseInt(current_height);
