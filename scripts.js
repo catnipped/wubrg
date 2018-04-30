@@ -45,8 +45,10 @@ function addCard (id) {
 
     let text = '';
     if (card.text != undefined) {
-        text = '<table class="text_wrapper"><td class="text"><span>' + card.text + '<br/>'+ flavor + '</span></td></table>'
-    }
+      text = '<table class="text_wrapper"><td class="text"><span>' + card.text + '<br/>'+ flavor + '</span></td></table>'
+    }else{
+			text = '<table class="text_wrapper"><td class="text">' + flavor + '</td></table>'
+		}
 
 		let types = '';
 		if (card.type != undefined) {
@@ -133,7 +135,7 @@ function addCard (id) {
 }
 
 function replaceInlineSymbol (symbol, symbol_img) {
-    $('span').html(function(i, text) {
+    $('.card:last-of-type span').html(function(i, text) {
     return text.replace(symbol, symbol_img);
     });
 }
@@ -153,7 +155,7 @@ function submitCards() {
 };
 
 function showAllCards() {
-	for (let i = 150; i < (200) ; i++) {
+	for (let i = 0; i < (carddata.length) ; i++) {
 			addCard(i);
 			dynamicTextHeight(i);
 	};
@@ -168,7 +170,7 @@ function dynamicTextHeight(id) {
         console.log(current_height);
         $('.card:last-of-type .text span:first-child').css('line-height', current_height + 'px');
         $('.card:last-of-type .text span.flavor').css('line-height', (current_height-1) + 'px');
-      
+
         $('.card:last-of-type .text span:first-child').css('font-size', '6pt');
         $('.card:last-of-type .text span:first-child.flavor').css('font-size', '5px');
         dynamicTextHeight(id);
