@@ -225,6 +225,7 @@ function loadFile() {
       var newArr = JSON.parse(lines);
 			console.log(newArr)
 			carddata = newArr.cards;
+			showAllCards();
     }
 
 
