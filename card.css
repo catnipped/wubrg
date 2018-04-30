@@ -26,8 +26,7 @@ h2 {
 }
 
 .card {
-	box-sizing: border-box;
-	padding: 3.5mm;
+
 	width: 63mm;
 	height: 88mm;
 	position: relative;
@@ -39,7 +38,7 @@ h2 {
 	background: white;
 	margin: 10px;
 	float: left;
-	z-index: -1;
+	background-color: black;
 }
 
 .symbol {
@@ -54,42 +53,72 @@ h2 {
     filter: drop-shadow(-1px 1px #000);
 }
 
-.White {
-	background-color: black;
+
+.frame {
+	width: 100%;
+	height:100%;
+	position: absolute;
+	top:0;
+	left:0;
+	padding: 3.5mm;
+	box-sizing: border-box;
+}
+
+.White .frame{
 	background-image: url('assets/frame_white.png');
 	background-size: contain;
 }
 
-.Blue {
-	background-color: black;
+.Blue .frame {
 	background-image: url('assets/frame_blue.png');
 	background-size: contain;
 }
-.Black {
-	background-color: black;
+.Black .frame{
 	background-image: url('assets/frame_black.png');
 	background-size: contain;
 }
-.Red {
-	background-color: black;
+.Red .frame {
 	background-image: url('assets/frame_red.png');
 	background-size: contain;
 }
-.Green {
-	background-color: black;
+.Green .frame {
 	background-image: url('assets/frame_green.png');
 	background-size: contain;
 }
 
-.Gold {
-	background-color: black;
+.Gold .frame {
 	background-image: url('assets/frame_gold.png');
 	background-size: contain;
 }
 
-.Artifact {
-	background-color: black;
+.Artifact .frame {
 	background-image: url('assets/frame_artifact.png');
+	background-size: contain;
+}
+
+.Land .frame {
+	background-image: url('assets/frame_land_generic.png');
+	background-size: contain;
+}
+
+.LandW .frame {
+	background-image: url('assets/frame_land_white.png');
+	background-size: contain;
+}
+.LandU .frame {
+	background-image: url('assets/frame_land_blue.png');
+	background-size: contain;
+}
+.LandB .frame {
+	background-image: url('assets/frame_land_black.png');
+	background-size: contain;
+}
+.LandR .frame {
+	background-image: url('assets/frame_land_red.png');
+	background-size: contain;
+}
+.LandG .frame {
+	background-image: url('assets/frame_land_green.png');
 	background-size: contain;
 }
 
@@ -105,7 +134,7 @@ span, h1, h2 {
     text-shadow: 1px 1px 0px black;
 	position: absolute;
 	left: 6.5mm;
-	top: 4.2mm;
+	top: 4.1mm;
 	display: inline-block;
 	width: 50mm;
 }
@@ -122,9 +151,9 @@ span, h1, h2 {
     position: absolute;
     left:7.25mm;
     top:8.23mm;
-    width: 47.8mm;
-    height: 38.365mm;
-    background-size: contain;
+    width: 49mm;
+    height: 39mm;
+    background-size: cover;
     background: white;
 }
 
@@ -133,9 +162,64 @@ span, h1, h2 {
     font-size: 2.5mm;
     text-shadow: 1px 1px 0px black;
     position: absolute;
-    top: 47.9mm;
+    top: 48.4mm;
     left: 7mm;
 }
+
+.set {
+    display: inline;
+    font-size: 3mm;
+
+    width: auto;
+		position: absolute;
+		top: 48.6mm;
+		right: 7mm;
+}
+.Common, .Basic {
+	color: black;
+	text-shadow: -0.1mm -0.1mm 0 white,
+													0 -0.1mm 0 white,
+													0.1mm -0.1mm 0 white,
+													0.1mm 0 0 white,
+													0.1mm 0.1mm 0 white,
+													0 0.1mm 0 white,
+													-0.1mm 0.1mm 0 white,
+													-0.1mm 0 0 white;
+}
+.Uncommon {
+	color: silver;
+	text-shadow: -0.1mm -0.1mm 0 #000,
+                          0 -0.1mm 0 #000,
+                          0.1mm -0.1mm 0 #000,
+                          0.1mm 0 0 #000,
+                          0.1mm 0.1mm 0 #000,
+                          0 0.1mm 0 #000,
+                          -0.1mm 0.1mm 0 #000,
+                          -0.1mm 0 0 #000;
+}
+.Rare {
+	color: gold;
+	text-shadow: -0.1mm -0.1mm 0 #000,
+													0 -0.1mm 0 #000,
+													0.1mm -0.1mm 0 #000,
+													0.1mm 0 0 #000,
+													0.1mm 0.1mm 0 #000,
+													0 0.1mm 0 #000,
+													-0.1mm 0.1mm 0 #000,
+													-0.1mm 0 0 #000;
+}
+.Mythic {
+	color: orange !important;
+	text-shadow: -0.1mm -0.1mm 0 #000,
+													0 -0.1mm 0 #000,
+													0.1mm -0.1mm 0 #000,
+													0.1mm 0 0 #000,
+													0.1mm 0.1mm 0 #000,
+													0 0.1mm 0 #000,
+													-0.1mm 0.1mm 0 #000,
+													-0.1mm 0 0 #000;
+}
+
 
 .text_wrapper{
     position: absolute;
@@ -143,10 +227,9 @@ span, h1, h2 {
     width: 48mm;
     height: 23.7mm;
     left:7.2mm;
-    font-weight: 300;
     font-size: 7pt;
     white-space:pre-wrap;
-    line-height: 9pt;
+    line-height: 8pt;
 }
 
 .text {
@@ -160,16 +243,27 @@ span, h1, h2 {
 	margin-top: 2mm;
     text-align: left;
     width: 100%;
-    line-height: 6pt;
+    line-height: 7pt;
+}
+
+.illus {
+	color: white;
+	width: 48mm;
+	font-size: 2.5mm;
+	text-shadow: 1px 1px 0px black;
+	position: absolute;
+	bottom: 6.5mm;
+	left:6.8mm;
+	text-align: center;
 }
 
 .stats {
     color: white;
-    font-size: 3.5mm;
+    font-size: 4mm;
     text-shadow: 1px 1px 0px black;
     position: absolute;
     bottom: 5.5mm;
-    right: 7mm;
+    right: 6.5mm;
 }
 
 em {

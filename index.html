@@ -1,16 +1,17 @@
 <html>
  <header>
  	<meta charset="UTF-8">
-    <title>mtg-proxygen</title>
+    <title>wubrg</title>
 	<script src="jquery.min.js"></script>
 	<script src="scripts.js" type="text/javascript"></script>
 	<link href="card.css" type="text/css" rel="stylesheet">
+  <link href="http://cdn.jsdelivr.net/npm/keyrune@latest/css/keyrune.css" rel="stylesheet" type="text/css" />
  </header>
  <body onload="fetchCardData()">
  	<form>
  	<h1><img class="symbol" src="assets/symbols/W.svg"> <img class="symbol" src="assets/symbols/U.svg"> <img class="symbol" src="assets/symbols/B.svg"> <img class="symbol" src="assets/symbols/R.svg"> <img class="symbol" src="assets/symbols/G.svg"></h1>
 
-    <h2>Instructions</h2><br/>
+    <h2>Welcome to WUBRG</h2><br/>
     Add cards by replacing the list below with names or id's of cards you want in quotes and commas for each new entry "Like","This" . A card's id is its name in lower case with dashes instead of special characters "like-this".
     <br/>
     Once you're happy just press print and the cards should show neatly at 9/1 cards per page, make sure to print backgrounds. Check 'low-ink" for grayscale high contrast versions.
@@ -20,7 +21,7 @@
     <a href="#" onclick="showAllCards()">Show Cards</a> </a><a href="#" onclick="window.print();return false;">Print!</a><span><input type="checkbox" onclick="toggleLowInk()" name="lowInk"/> low ink</span>
  	</form>
  	<div id="cards">
-
+    <div class="card White"><div class="illustration" style="background-image: url( board the weatherlight);"></div><div class="frame"><span class="name">Board the Weatherlight<span class="cost"><img class="symbol" src="assets/symbols/1.svg"><img class="symbol" src="assets/symbols/W.svg"></span></span><span class="types">Sorcery</span><span class="set Uncommon"> <i class="ss ss-ori"></i></span><table class="text_wrapper"><tbody><tr><td class="text"><span>Look at the top five cards of your library. You may reveal a historic card from among them and put it into your hand. Put the rest on the bottom of your library in a random order. <i>(Artifacts, legendaries, and Sagas are historic.)</i><br><span class="flavor">A new gathering for a new age.</span></span></td></tr></tbody></table><span class="illus">Illus. Tyler Jacobson</span></div></div>
   </div>
  </body>
 </html>

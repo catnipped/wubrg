@@ -41,6 +41,12 @@ function addCard (id) {
 		let stats = '';
 		if (card.power != undefined && card.toughness != undefined) {
 			stats = '<span class="stats">' + card.power + '/' + card.toughness + '</span>';
+		} else if (card.loyalty != undefined) {
+			stats = '<span class="stats">' + card.loyalty + '</span>';
+		}
+		let illus ='';
+		if (card.artist != undefined) {
+			illus = '<span class="illus">Illus. ' + card.artist + '</span>'
 		}
 
     let text = '';
@@ -61,15 +67,22 @@ function addCard (id) {
 		}
 
 		let color = 'Artifact';
+		if (card.types == "Land") {
+			color = card.types
+			 if (card.colorIdentity.length == 1) {
+						color = card.types + card.colorIdentity
+			 }
+		}
 		if (card.colors != undefined) {
             if (card.colors.length > 1) {
-                color = 'Gold'
+								  color = 'Gold'
             } else {
-			 color = card.colors
+								 color = card.colors
             }
 		}
+		let setsymbol = '<span class="set ' + card.rarity + '"> <i class="ss ss-pmtg1"></i></span>'
 
-	let newHtml = ('<div class="card ' + color + '">' + name + illustration + types + text + stats + ' </div>');
+	let newHtml = ('<div class="card ' + color + '">'+ illustration + '<div class="frame">' + name + types + setsymbol + text + illus + stats + '</div></div>');
 	$('#cards').append( newHtml );
     replaceInlineSymbol(/\{0}/g,'<img class="symbol" src="assets/symbols/0.svg"/>');
     replaceInlineSymbol(/\{1}/g,'<img class="symbol" src="assets/symbols/1.svg"/>');
@@ -155,7 +168,7 @@ function submitCards() {
 };
 
 function showAllCards() {
-	for (let i = 0; i < (carddata.length) ; i++) {
+	for (let i = 200; i < (carddata.length) ; i++) {
 			addCard(i);
 			dynamicTextHeight(i);
 	};
