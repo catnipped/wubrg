@@ -15,6 +15,11 @@ form {
     max-width: 600px
 }
 
+label {
+	color:blue;
+	text-decoration: underline;
+}
+
 h1 {
     font-family: goudymedievalregular;
 }
