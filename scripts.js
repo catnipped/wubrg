@@ -168,7 +168,7 @@ function submitCards() {
 };
 
 function showAllCards() {
-	for (let i = 200; i < (carddata.length) ; i++) {
+	for (let i = 0; i < (carddata.length) ; i++) {
 			addCard(i);
 			dynamicTextHeight(i);
 	};

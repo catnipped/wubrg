@@ -280,9 +280,19 @@ opacity: 0;
 }
 
 
-.low-ink .illustration, .low-ink .honor, .low-ink .influence_pool, .low-ink .stronghold_symbol, .low-ink .top_symbol, .low-ink .glory, .low-ink .title_clan, .low-ink .military, .low-ink .military_bonus, .low-ink .political, .low-ink .political_bonus {
-    filter: grayscale(1) contrast(0.8) brightness(1.2);
+.low-ink .illustration, .low-ink .frame {
+    filter: grayscale(1) contrast(0.5) brightness(1.5);
     color: black;
+}
+
+.low-ink span {
+	color: black !important;
+	text-shadow: none !important;
+
+}
+.low-ink {
+	background: white;
+	border: 1px solid black;
 }
 
 @media print {
