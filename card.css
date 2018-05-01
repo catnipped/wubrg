@@ -46,14 +46,15 @@ h2 {
 
 .symbol {
     display: inline;
-    height: 0.9em;
+    height: 0.8em;
+		vertical-align:-10%;
     width: auto;
     padding-left:0.3mm;
     padding-right: 0.3mm;
-       filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
+       /* filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
     filter: url(#shadow);
     -webkit-filter: drop-shadow(-1px 1px #000);
-    filter: drop-shadow(-1px 1px #000);
+    filter: drop-shadow(-1px 1px #000); */
 }
 
 
@@ -136,18 +137,18 @@ span, h1, h2 {
 	color: white;
     text-shadow: 1px 1px 0px black;
 	position: absolute;
-	left: 6.5mm;
+	left: 7mm;
 	top: 4.1mm;
 	display: inline-block;
-	width: 50mm;
+	width: 51mm;
 }
 
 .cost {
+	margin-top: 0.15mm;
 	float: right;
 }
 .cost span {
 	margin-left: 0.2mm;
-	font-size: 3.0mm
 }
 
 .illustration {
@@ -162,10 +163,10 @@ span, h1, h2 {
 
 .types {
     color: white;
-    font-size: 2.5mm;
+    font-size: 3mm;
     text-shadow: 1px 1px 0px black;
     position: absolute;
-    top: 48.4mm;
+    top: 47.8mm;
     left: 7mm;
 }
 
@@ -180,47 +181,47 @@ span, h1, h2 {
 }
 .Common, .Basic {
 	color: black;
-	text-shadow: -0.1mm -0.1mm 0 white,
-													0 -0.1mm 0 white,
-													0.1mm -0.1mm 0 white,
-													0.1mm 0 0 white,
-													0.1mm 0.1mm 0 white,
-													0 0.1mm 0 white,
-													-0.1mm 0.1mm 0 white,
-													-0.1mm 0 0 white;
+	text-shadow: -0.2mm -0.2mm 0 white,
+													0 -0.2mm 0 white,
+													0.2mm -0.2mm 0 white,
+													0.2mm 0 0 white,
+													0.2mm 0.2mm 0 white,
+													0 0.2mm 0 white,
+													-0.2mm 0.2mm 0 white,
+													-0.2mm 0 0 white;
 }
 .Uncommon {
 	color: silver;
-	text-shadow: -0.1mm -0.1mm 0 #000,
-                          0 -0.1mm 0 #000,
-                          0.1mm -0.1mm 0 #000,
-                          0.1mm 0 0 #000,
-                          0.1mm 0.1mm 0 #000,
-                          0 0.1mm 0 #000,
-                          -0.1mm 0.1mm 0 #000,
-                          -0.1mm 0 0 #000;
+	text-shadow: -0.2mm -0.2mm 0 #000,
+													0 -0.2mm 0 #000,
+													0.2mm -0.2mm 0 #000,
+													0.2mm 0 0 #000,
+													0.2mm 0.2mm 0 #000,
+													0 0.2mm 0 #000,
+													-0.2mm 0.2mm 0 #000,
+													-0.2mm 0 0 #000;
 }
 .Rare {
 	color: gold;
-	text-shadow: -0.1mm -0.1mm 0 #000,
-													0 -0.1mm 0 #000,
-													0.1mm -0.1mm 0 #000,
-													0.1mm 0 0 #000,
-													0.1mm 0.1mm 0 #000,
-													0 0.1mm 0 #000,
-													-0.1mm 0.1mm 0 #000,
-													-0.1mm 0 0 #000;
+	text-shadow: -0.2mm -0.2mm 0 #000,
+													0 -0.2mm 0 #000,
+													0.2mm -0.2mm 0 #000,
+													0.2mm 0 0 #000,
+													0.2mm 0.2mm 0 #000,
+													0 0.2mm 0 #000,
+													-0.2mm 0.2mm 0 #000,
+													-0.2mm 0 0 #000;
 }
 .Mythic {
 	color: orange !important;
-	text-shadow: -0.1mm -0.1mm 0 #000,
-													0 -0.1mm 0 #000,
-													0.1mm -0.1mm 0 #000,
-													0.1mm 0 0 #000,
-													0.1mm 0.1mm 0 #000,
-													0 0.1mm 0 #000,
-													-0.1mm 0.1mm 0 #000,
-													-0.1mm 0 0 #000;
+	text-shadow: -0.2mm -0.2mm 0 #000,
+													0 -0.2mm 0 #000,
+													0.2mm -0.2mm 0 #000,
+													0.2mm 0 0 #000,
+													0.2mm 0.2mm 0 #000,
+													0 0.2mm 0 #000,
+													-0.2mm 0.2mm 0 #000,
+													-0.2mm 0 0 #000;
 }
 
 
@@ -230,9 +231,9 @@ span, h1, h2 {
     width: 48mm;
     height: 23.7mm;
     left:7.2mm;
-    font-size: 7pt;
+    font-size: 9pt;
     white-space:pre-wrap;
-    line-height: 8pt;
+    line-height: 9pt;
 }
 
 .text {
@@ -240,17 +241,17 @@ span, h1, h2 {
 }
 
 .flavor {
-    font-size: 6pt;
+    font-size: 9pt;
 	font-style: italic;
 	display: inline-block;
 	margin-top: 2mm;
     text-align: left;
     width: 100%;
-    line-height: 7pt;
+    line-height: 9pt;
 }
 
 .illus {
-	color: white;
+	color: rgba(230,230,230,1);
 	width: 48mm;
 	font-size: 2.5mm;
 	text-shadow: 1px 1px 0px black;
@@ -266,7 +267,8 @@ span, h1, h2 {
     text-shadow: 1px 1px 0px black;
     position: absolute;
     bottom: 5.3mm;
-    right: 6.5mm;
+    right: 6mm;
+		font-weight: bold;
 }
 
 em {
