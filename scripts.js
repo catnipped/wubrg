@@ -136,8 +136,8 @@ function addCard (id) {
 	replaceInlineSymbol(/\{T}/g,'<img class="symbol" src="assets/symbols/T.svg"/>');
 	replaceInlineSymbol(/\{Q}/g,'<img class="symbol" src="assets/symbols/Q.svg"/>');
 	replaceInlineSymbol(/\{E}/g,'<img class="symbol" src="assets/symbols/E.svg"/>');
-    replaceInlineSymbol(/\(/g,'<i>(');
-    replaceInlineSymbol(/\)/g,')</i>');
+  replaceInlineSymbol(/\(/g,'<i>(');
+  replaceInlineSymbol(/\)/g,')</i>');
   replaceInlineSymbol(/\undefined/g,'');
   replaceInlineSymbol(/\n/g,'<hr>');
 }
@@ -163,6 +163,7 @@ function submitCards() {
 };
 
 function showAllCards() {
+		$('#cards').empty()
 	for (let i = 0; i < (carddata.length) ; i++) {
 			addCard(i);
 			dynamicTextHeight(i);
