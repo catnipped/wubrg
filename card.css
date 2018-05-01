@@ -37,8 +37,6 @@ h2 {
 	position: relative;
 	overflow: hidden;
 	border-radius: 10px;
-	border-style: solid;
-    border-width: 1pt;
 	box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.28);
 	background: white;
 	margin: 10px;
@@ -285,9 +283,16 @@ opacity: 0;
 }
 
 
-.low-ink .illustration, .low-ink .frame {
-    filter: grayscale(1) contrast(0.5) brightness(1.5);
-    color: black;
+.low-ink .illustration {
+    filter: grayscale(0) contrast(0.7) brightness(1.2);
+		border: 0.5mm silver inset;
+		box-sizing: border-box;
+}
+
+.low-ink .frame {
+	background: none;
+	outline: 0.5mm lightgray outset;
+	outline-offset: -3.3mm;
 }
 
 .low-ink span {
@@ -297,7 +302,7 @@ opacity: 0;
 }
 .low-ink {
 	background: white;
-	border: 1px solid black;
+	border: none;
 }
 
 @media print {

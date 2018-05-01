@@ -20,7 +20,7 @@ function addCard (id) {
 
 		let illustration = '';
 		if (card.imageName != undefined) {
-			illustration = '<div class="illustration" style="background-image: url( ' + card.imageName + ');"></div>'
+			illustration = '<div class="illustration" style="background-image: url(' + card.imageName + '); background-size:cover; background-position: center;"></div>'
 		};
 
     let flavor = '';
