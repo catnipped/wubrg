@@ -141,6 +141,8 @@ span, h1, h2 {
 	top: 4.1mm;
 	display: inline-block;
 	width: 51mm;
+	color: rgb(240, 240, 240);
+	letter-spacing: 0.22mm;
 }
 
 .cost {
@@ -168,6 +170,7 @@ span, h1, h2 {
     position: absolute;
     top: 47.8mm;
     left: 7mm;
+		color: rgb(240, 240, 240);
 }
 
 .set {
@@ -269,6 +272,7 @@ span, h1, h2 {
     bottom: 5.3mm;
     right: 6mm;
 		font-weight: bold;
+		color: rgb(240, 240, 240);
 }
 
 em {
