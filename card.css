@@ -236,7 +236,7 @@ span, h1, h2 {
     left:7.2mm;
     font-size: 8.5pt;
     white-space:pre-wrap;
-    line-height: 9pt;
+    line-height: 9.0pt;
 }
 
 .text {
@@ -244,13 +244,11 @@ span, h1, h2 {
 }
 
 .flavor {
-    font-size: 8.5pt;
 	font-style: italic;
 	display: inline-block;
 	margin-top: 2mm;
     text-align: left;
     width: 100%;
-    line-height: 9pt;
 }
 
 .illus {

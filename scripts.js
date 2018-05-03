@@ -172,16 +172,17 @@ function showAllCards() {
 
 function dynamicTextHeight(id) {
     if ($('.card:last-of-type .text span:first-child').height() > 85) {
+    	let current_size = $('.card:last-of-type .text span:first-child').css('font-size');
         let current_height = $('.card:last-of-type .text span:first-child').css('line-height');
-        current_height = current_height[0]+current_height[1];
-        current_height = parseInt(current_height);
-        current_height = current_height - 1;
+        current_height = parseFloat(current_height);
+        current_height = current_height - 0.5;
         console.log(current_height);
-        $('.card:last-of-type .text span:first-child').css('line-height', current_height + 'px');
-        $('.card:last-of-type .text span.flavor').css('line-height', (current_height-1) + 'px');
-
-        $('.card:last-of-type .text span:first-child').css('font-size', '6pt');
-        $('.card:last-of-type .text span:first-child.flavor').css('font-size', '5px');
+        current_size = parseFloat(current_size);
+        current_size = current_size - 0.5;
+        current_size = Math.max(current_size, 4.0);
+        console.log(current_size);
+        $('.card:last-of-type .text span:first-child').css('line-height', current_height + 'pt');
+        $('.card:last-of-type .text span:first-child').css('font-size', current_size + 'pt');
         dynamicTextHeight(id);
     }
 };
