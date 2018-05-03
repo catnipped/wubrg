@@ -187,14 +187,6 @@ function dynamicTextHeight() {
     }
 };
 
-function makeString(cssinput) {
-	let str= '';
-	for (i=0; i<cssinput.length; i++) {
-    	str = str.concat(str,cssinput[i])
-	}	
-	return String(str)
-}
-
 function toggleLowInk() {
     $("[name=lowInk]").change(function(){
         if ( this.checked ){
