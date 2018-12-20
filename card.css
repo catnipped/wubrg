@@ -14,6 +14,10 @@ img {
 form {
     max-width: 600px
 }
+form a {
+	text-decoration: underline;
+	color: blue;
+}
 
 label {
 	color:blue;
@@ -185,13 +189,13 @@ span, h1, h2 {
 .Common, .Basic {
 	color: black;
 	text-shadow: -0.2mm -0.2mm 0 white,
-													0 -0.2mm 0 white,
-													0.2mm -0.2mm 0 white,
-													0.2mm 0 0 white,
-													0.2mm 0.2mm 0 white,
-													0 0.2mm 0 white,
-													-0.2mm 0.2mm 0 white,
-													-0.2mm 0 0 white;
+				0 -0.2mm 0 white,
+				0.2mm -0.2mm 0 white,
+				0.2mm 0 0 white,
+				0.2mm 0.2mm 0 white,
+				0 0.2mm 0 white,
+				-0.2mm 0.2mm 0 white,
+				-0.2mm 0 0 white;
 }
 .Uncommon {
 	color: silver;
