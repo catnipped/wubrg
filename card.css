@@ -72,24 +72,24 @@ h2 {
 	box-sizing: border-box;
 }
 
-.White .frame{
+.W .frame{
 	background-image: url('assets/frame_white.png');
 	background-size: contain;
 }
 
-.Blue .frame {
+.U .frame {
 	background-image: url('assets/frame_blue.png');
 	background-size: contain;
 }
-.Black .frame{
+.B .frame{
 	background-image: url('assets/frame_black.png');
 	background-size: contain;
 }
-.Red .frame {
+.R .frame {
 	background-image: url('assets/frame_red.png');
 	background-size: contain;
 }
-.Green .frame {
+.G .frame {
 	background-image: url('assets/frame_green.png');
 	background-size: contain;
 }
@@ -163,7 +163,7 @@ span, h1, h2 {
     top:8.23mm;
     width: 49mm;
     height: 39mm;
-    background-size: cover;
+	background-size: cover;
     background: white;
 }
 

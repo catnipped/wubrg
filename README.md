@@ -1,6 +1,11 @@
-Coming soon
+# WUBRG a proxy maker
 
-#INSTRUCTIONS:
+## TODO
+
+- [] Integrate set icons from scryfall.com
+- []
+
+## INSTRUCTIONS
 
 Have Fun!
 
