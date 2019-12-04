@@ -12,16 +12,14 @@
    <form>
       <h1><img class="symbol" src="assets/symbols/W.svg"> <img class="symbol" src="assets/symbols/U.svg"> <img
             class="symbol" src="assets/symbols/B.svg"> <img class="symbol" src="assets/symbols/R.svg"> <img
-            class="symbol" src="assets/symbols/G.svg"></h1>
+            class="symbol" src="assets/symbols/G.svg"> WUBRG</h1>
 
-      <h2>Welcome to WUBRG</h2><br />
-      <!-- <a onclick="changePage('mb1',-1)" id="previousPage">Previous Page!</a>
-      <a onclick="changePage('mb1',1)" id="nextPage">Next Page!</a> -->
-      <!-- <input type='file' id='fileinput'><br /> -->
-      <input type="checkbox" onclick="toggleLocal()" name="local" /><span>toggle local file</span>
+      <h2>Settings</h2>
+      <span><input type="checkbox" onclick="toggleLocal()" name="local" /> Local JSON</span>
       <input type="text" size="50" name="path" value="t:shapeshifter+s:mh1">
-      <a onclick="generateUrl()">Magic!</a> </a><a onclick="window.print();return false;">Print!</a><span><input
-            type="checkbox" onclick="toggleLowInk()" name="lowInk" /> low ink</span>
+      <a onclick="generateUrl()">Generate Magic!</a>
+      <span><input type="checkbox" onclick="toggleLowInk()" name="lowInk" /> Low Ink</span>
+      <a onclick="window.print();return false;">Print!</a>
    </form>
    <div id="cards">
       <div class="card White">
