@@ -320,14 +320,14 @@ opacity: 0;
 @media print {
     body {
         background: white;
-        /* margin: -2mm -2mm */
+        margin: -.2mm
     }
 
 	.card {
 		box-shadow: none;
-		border: 1pt dashed gray;
+		border: .1mm dashed gray;
         border-radius: 0;
-        margin: 0;
+        margin: -.1mm;
         page-break-inside: avoid;
 	}
 
