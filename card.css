@@ -19,6 +19,10 @@ form a {
 	color: blue;
 }
 
+.hide {
+	display:none;
+}
+
 label {
 	color:blue;
 	text-decoration: underline;
@@ -50,9 +54,9 @@ h2 {
 
 .symbol {
     display: inline;
-    height: 0.8em;
+    height: 0.95em;
 	vertical-align:-10%;
-    width: auto;
+    width: 0.95em;
     padding-left:0.3mm;
     padding-right: 0.3mm;
        /* filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
@@ -234,7 +238,7 @@ span, h1, h2 {
 
 .text_wrapper{
     position: absolute;
-    top: 52mm;
+    top: 52.5mm;
     width: 48mm;
     height: 23.7mm;
     left:7.2mm;
@@ -316,12 +320,12 @@ opacity: 0;
 @media print {
     body {
         background: white;
-        margin: -2mm -2mm
+        /* margin: -2mm -2mm */
     }
 
 	.card {
 		box-shadow: none;
-		border: 1px dashed black;
+		border: 1pt dashed gray;
         border-radius: 0;
         margin: 0;
         page-break-inside: avoid;

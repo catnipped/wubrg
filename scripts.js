@@ -1,6 +1,71 @@
 let carddata = new Object();
+let local = false;
+let page = 1;
+let hasmore = false;
 
+function toggleLocal() {
+	$("[name=local]").change(function () {
+		if (this.checked) {
+			$("[name=path]").val("file.json");
+			local = true;
+		} else {
+			$("[name=path]").val("t:shapeshifter+s:mh1");
+			local = false;
+		};
+	})
+}
+var urlHash = getUrlHash();
+function setUpPath() {
+	if (local) {
+		$("[name=local]").prop("checked", true);
+	}
+	if (urlHash != null) {
+		$("[name=path]").val(urlHash);
+	}
+}
 
+function generateUrl() {
+	var path = $('[name = path]').val()
+	var link = ""
+	if (!local) {
+		link = ('?' + path)
+	} else {
+		link = ('?l=' + path)
+	}
+	let domain = window.location.href;
+	if (domain.includes('?')) domain = window.location.href.slice(0, window.location.href.indexOf('?'));
+	window.location.href = domain + link;
+}
+
+function changePage(set, changeInt) {
+	page += changeInt;
+	if (page == 0) {
+		page = 1
+	}
+	renderCards(set)
+	if (page == 1) {
+		$("#previousPage").addClass('.hide');
+	} else {
+		$("#previousPage").removeClass('.hide');
+	}
+	if (!hasmore) {
+		$("#nextPage").addClass('.hide');
+	} else {
+		$("#nextPage").removeClass('.hide');
+	}
+}
+
+function renderCards() {
+	if (local) {
+		$.getJSON(urlHash, function (json) {
+			carddata = json.cards;
+			showAllCards();
+		});
+	} else {
+		let url = 'https://api.scryfall.com/cards/search?q=' + urlHash;
+		fetchCardData(url)
+	}
+}
 
 function fetchCardData(url) {
 	// Create a request variable and assign a new XMLHttpRequest object to it.
@@ -12,6 +77,7 @@ function fetchCardData(url) {
 	request.onload = function () {
 		cards = JSON.parse(this.response);
 		console.log(cards)
+		hasmore = cards.hasmore;
 		carddata = cards.data
 		showAllCards();
 	}
@@ -35,6 +101,8 @@ function addCard(id) {
 	let illustration = '';
 	if (card.image_uris != undefined) {
 		illustration = '<div class="illustration" style="background-image: url(' + card.image_uris.art_crop + '); background-size:cover; background-position: top;"></div>'
+	} else if (card.imageName != undefined) {
+		illustration = '<div class="illustration" style="background-image: url(' + card.imageName + '); background-size:cover; background-position: top;"></div>'
 	};
 
 	let flavor = '';
@@ -128,25 +196,25 @@ function addCard(id) {
 	replaceInlineSymbol(/\{B}/g, '<img class="symbol" src="assets/symbols/B.svg"/>');
 	replaceInlineSymbol(/\{G}/g, '<img class="symbol" src="assets/symbols/G.svg"/>');
 
-	replaceInlineSymbol(/\{WU}/g, '<img class="symbol" src="assets/symbols/WU.svg"/>');
-	replaceInlineSymbol(/\{WB}/g, '<img class="symbol" src="assets/symbols/WB.svg"/>');
-	replaceInlineSymbol(/\{UB}/g, '<img class="symbol" src="assets/symbols/UB.svg"/>');
-	replaceInlineSymbol(/\{UR}/g, '<img class="symbol" src="assets/symbols/UR.svg"/>');
-	replaceInlineSymbol(/\{BR}/g, '<img class="symbol" src="assets/symbols/BR.svg"/>');
-	replaceInlineSymbol(/\{BG}/g, '<img class="symbol" src="assets/symbols/BG.svg"/>');
-	replaceInlineSymbol(/\{RW}/g, '<img class="symbol" src="assets/symbols/RW.svg"/>');
-	replaceInlineSymbol(/\{GW}/g, '<img class="symbol" src="assets/symbols/GW.svg"/>');
-	replaceInlineSymbol(/\{GU}/g, '<img class="symbol" src="assets/symbols/GU.svg"/>');
-	replaceInlineSymbol(/\{2W}/g, '<img class="symbol" src="assets/symbols/2W.svg"/>');
-	replaceInlineSymbol(/\{2U}/g, '<img class="symbol" src="assets/symbols/2U.svg"/>');
-	replaceInlineSymbol(/\{2B}/g, '<img class="symbol" src="assets/symbols/2B.svg"/>');
-	replaceInlineSymbol(/\{2R}/g, '<img class="symbol" src="assets/symbols/2R.svg"/>');
-	replaceInlineSymbol(/\{2G}/g, '<img class="symbol" src="assets/symbols/2G.svg"/>');
-	replaceInlineSymbol(/\{WP}/g, '<img class="symbol" src="assets/symbols/WP.svg"/>');
-	replaceInlineSymbol(/\{UP}/g, '<img class="symbol" src="assets/symbols/UP.svg"/>');
-	replaceInlineSymbol(/\{BP}/g, '<img class="symbol" src="assets/symbols/BP.svg"/>');
-	replaceInlineSymbol(/\{RP}/g, '<img class="symbol" src="assets/symbols/RP.svg"/>');
-	replaceInlineSymbol(/\{GP}/g, '<img class="symbol" src="assets/symbols/GP.svg"/>');
+	replaceInlineSymbol(/\{W\/U}/g, '<img class="symbol" src="assets/symbols/WU.svg"/>');
+	replaceInlineSymbol(/\{W\/B}/g, '<img class="symbol" src="assets/symbols/WB.svg"/>');
+	replaceInlineSymbol(/\{U\/B}/g, '<img class="symbol" src="assets/symbols/UB.svg"/>');
+	replaceInlineSymbol(/\{U\/R}/g, '<img class="symbol" src="assets/symbols/UR.svg"/>');
+	replaceInlineSymbol(/\{B\/R}/g, '<img class="symbol" src="assets/symbols/BR.svg"/>');
+	replaceInlineSymbol(/\{B\/G}/g, '<img class="symbol" src="assets/symbols/BG.svg"/>');
+	replaceInlineSymbol(/\{R\/W}/g, '<img class="symbol" src="assets/symbols/RW.svg"/>');
+	replaceInlineSymbol(/\{G\/W}/g, '<img class="symbol" src="assets/symbols/GW.svg"/>');
+	replaceInlineSymbol(/\{G\/U}/g, '<img class="symbol" src="assets/symbols/GU.svg"/>');
+	replaceInlineSymbol(/\{2\/W}/g, '<img class="symbol" src="assets/symbols/2W.svg"/>');
+	replaceInlineSymbol(/\{2\/U}/g, '<img class="symbol" src="assets/symbols/2U.svg"/>');
+	replaceInlineSymbol(/\{2\/B}/g, '<img class="symbol" src="assets/symbols/2B.svg"/>');
+	replaceInlineSymbol(/\{2\/R}/g, '<img class="symbol" src="assets/symbols/2R.svg"/>');
+	replaceInlineSymbol(/\{2\/G}/g, '<img class="symbol" src="assets/symbols/2G.svg"/>');
+	replaceInlineSymbol(/\{W\/P}/g, '<img class="symbol" src="assets/symbols/WP.svg"/>');
+	replaceInlineSymbol(/\{U\/P}/g, '<img class="symbol" src="assets/symbols/UP.svg"/>');
+	replaceInlineSymbol(/\{B\/P}/g, '<img class="symbol" src="assets/symbols/BP.svg"/>');
+	replaceInlineSymbol(/\{R\/P}/g, '<img class="symbol" src="assets/symbols/RP.svg"/>');
+	replaceInlineSymbol(/\{G\/P}/g, '<img class="symbol" src="assets/symbols/GP.svg"/>');
 
 	replaceInlineSymbol(/\{T}/g, '<img class="symbol" src="assets/symbols/T.svg"/>');
 	replaceInlineSymbol(/\{Q}/g, '<img class="symbol" src="assets/symbols/Q.svg"/>');
@@ -213,6 +281,8 @@ function toggleLowInk() {
 };
 
 function loadFile() {
+
+
 	var input, file, fr;
 
 	if (typeof window.FileReader !== 'function') {
@@ -235,6 +305,7 @@ function loadFile() {
 		fr = new FileReader();
 		fr.onload = receivedText;
 		fr.readAsText(file);
+		local = true;
 	}
 
 	function receivedText(e) {
@@ -246,4 +317,17 @@ function loadFile() {
 	}
 
 
+}
+
+function getUrlHash() {
+	if (!window.location.href.includes('?')) return null;
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1);
+
+	if (hashes.includes("l=")) {
+		local = true
+		console.log("slashing hash")
+		hashes = hashes.slice(2)
+	}
+	console.log(hashes);
+	return hashes;
 }
