@@ -261,3 +261,9 @@ function getUrlHash() {
 	console.log(hashes);
 	return hashes;
 }
+
+function savePng() {
+	html2canvas(document.body).then(function(canvas) {
+		document.body.appendChild(canvas);
+	});
+}
