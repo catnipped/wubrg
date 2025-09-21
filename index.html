@@ -1,6 +1,7 @@
 <html>
 <header>
    <meta charset="UTF-8">
+   <meta name="viewport" content="width=1000px" />
    <title>wubrg</title>
    <script src="jquery.min.js"></script>
    <script src="scripts.js" type="text/javascript"></script>
@@ -12,13 +13,14 @@
    <form>
       <h1><img class="symbol" src="assets/symbols/W.svg"> <img class="symbol" src="assets/symbols/U.svg"> <img
             class="symbol" src="assets/symbols/B.svg"> <img class="symbol" src="assets/symbols/R.svg"> <img
-            class="symbol" src="assets/symbols/G.svg"> WUBRG</h1>
+            class="symbol" src="assets/symbols/G.svg"></h1>
 
       <h2>Settings</h2>
       <span><input type="checkbox" onclick="toggleLocal()" name="local" /> Local JSON</span>
-      <input type="text" size="50" name="path" value="t:shapeshifter+s:mh1">
+      <input type="text" size="25" name="path" value="t:shapeshifter+s:mh1">
       <a onclick="generateUrl()">Generate Magic!</a>
       <span><input type="checkbox" onclick="toggleLowInk()" name="lowInk" /> Low Ink</span>
+	  <span><input type="checkbox" onclick="toggleThermalPrint()" name="thermalPrint" /> Thermal Print</span>
       <a onclick="window.print();return false;">Print!</a>
    </form>
    <div id="cards">

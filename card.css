@@ -3,16 +3,18 @@
 @import url('https://fonts.googleapis.com/css?family=Lustria');
 @import url('https://fonts.googleapis.com/css?family=Radley:400,400i|Vollkorn:400,400i,600,600i,700,700i,900,900i');
 @import url('assets/symbols/symbols.css');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Fragment+Mono:ital@0;1&family=Instrument+Serif:ital@0;1&display=swap');
+
 body {
 	font-family: crimson_textregular, Radley;
 	font-size: 12pt;
-  background-color:lightgray;
+	background-color:lightgray;
 }
 img {
     shape-rendering: crispEdges;
 }
 form {
-    max-width: 600px
+    max-width: 63mm;
 }
 form a {
 	text-decoration: underline;
@@ -39,7 +41,6 @@ h2 {
 }
 
 .card {
-
 	width: 63mm;
 	height: 88mm;
 	position: relative;
@@ -315,6 +316,90 @@ opacity: 0;
 .low-ink {
 	background: white;
 	border: none;
+}
+
+.thermal-print {
+	background: white;
+	border: none;
+	font-family: 'Courier Prime';
+	margin: 0
+}
+.thermal-print .card {
+	width: 100vw;
+	min-height: 88mm;
+	height: auto;
+	position: relative;
+	overflow: hidden;
+	border-radius: 0px;
+	box-shadow: none;
+	margin: 0px;
+	background-color: transparent;
+}
+
+.thermal-print .card .frame {
+	background: none;
+	padding: 0;
+	position: unset;
+	height: auto;
+	padding-bottom: 5mm;
+	border-bottom: dashed thin black;
+	margin-bottom: 5mm;
+}
+
+.thermal-print .illustration {
+	float:none;
+	width: 100vw;
+	height: 70vw;
+	position: unset;
+}
+
+.thermal-print .frame .name {
+	font-size: 6mm;
+	font-family: 'Courier Prime';
+	left: 0;
+	top: 0;
+	text-shadow: none;
+	max-width: 100vw;
+	color: black;
+	width: 100%;
+	margin-top: 2mm;
+	position: static;
+	border-bottom: solid thin black;
+	letter-spacing: 0;
+}
+
+.thermal-print .frame .types {
+	font-size: 4mm;
+	position: unset;
+	text-shadow: none;
+	color: black;
+}
+
+.thermal-print .frame .set {
+	display: none;
+}
+
+.thermal-print .frame .text_wrapper {
+	position: unset;
+	width: 100%;
+}
+.thermal-print .text span {
+	font-size: 4mm !important;
+	line-height: 4mm !important;
+}
+.thermal-print .illus {
+	display: none;
+}
+
+.thermal-print .flavor {
+	color: gray;
+}
+
+.thermal-print .stats {
+	text-shadow: none;
+	font-size: 6mm;
+	color: black;
+	font-weight: 100;
 }
 
 @media print {
