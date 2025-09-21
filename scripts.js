@@ -283,10 +283,8 @@ function toggleLowInk() {
 function toggleThermalPrint() {
 	$("[name=thermalPrint]").change(function () {
 		if (this.checked) {
-			$("body").addClass('thermal-print');
-		} else {
-			$('body').removeClass('thermal-print');
-		};
+			$("#cards").addClass('thermal-print');
+		}
 	})
 };
 
