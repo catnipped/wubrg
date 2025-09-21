@@ -319,8 +319,7 @@ opacity: 0;
 }
 
 .thermal-print .card {
-	width: 100vw;
-	min-height: 88mm;
+	width: 55mm;
 	height: auto;
 	position: relative;
 	overflow: hidden;
@@ -342,13 +341,13 @@ opacity: 0;
 
 .thermal-print .illustration {
 	float:none;
-	width: 100vw;
-	height: 80vw;
+	width: 55mm;
+	height: 40mm;
 	position: unset;
 }
 
 .thermal-print .frame .name {
-	font-size: 6mm;
+	font-size: 5mm;
 	font-family: 'Courier Prime';
 	left: 0;
 	top: 0;
@@ -377,12 +376,12 @@ opacity: 0;
 .thermal-print .frame .text_wrapper {
 	position: unset;
 	width: 100%;
-	margin-top: 3mm;
-	margin-bottom: 3mm;
+	margin-top: 2mm;
+	margin-bottom: 2mm;
 }
 .thermal-print .text span {
-	font-size: 4mm !important;
-	line-height: 4mm !important;
+	font-size: 3.5mm !important;
+	line-height: 3.5mm !important;
 }
 .thermal-print .illus {
 	display: none;
@@ -394,12 +393,15 @@ opacity: 0;
 
 .thermal-print .stats {
 	text-shadow: none;
-	font-size: 6mm;
+	font-size: 5mm;
+	right:0mm;
 	color: black;
 	font-weight: 100;
+	margin-bottom: 2mm;
 }
 
 body:has(> .thermal-print) {
+	max-width: 55mm;
 	background: white;
 	border: none;
 	font-family: 'Courier Prime';
