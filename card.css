@@ -1,28 +1,24 @@
-@import url('assets/fonts/goudy/stylesheet.css');
-@import url('assets/fonts/crimson-numbers/stylesheet.css');
-@import url('https://fonts.googleapis.com/css?family=Lustria');
-@import url('https://fonts.googleapis.com/css?family=Radley:400,400i|Vollkorn:400,400i,600,600i,700,700i,900,900i');
 @import url('assets/symbols/symbols.css');
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Fragment+Mono:ital@0;1&family=Instrument+Serif:ital@0;1&display=swap');
 
 body {
-	font-family: crimson_textregular, Radley;
-	font-size: 12pt;
-	background-color:lightgray;
+	max-width: 55mm;
+	background: white;
+	border: none;
+	font-family: 'Courier Prime';
+	margin: 0
 }
+
 img {
     shape-rendering: crispEdges;
 }
 form {
-    max-width: 63mm;
+    max-width: 55mm;
+	border-bottom: dashed thin black;
 }
 form a {
 	text-decoration: underline;
 	color: blue;
-}
-
-.hide {
-	display:none;
 }
 
 label {
@@ -30,27 +26,29 @@ label {
 	text-decoration: underline;
 }
 
-h1 {
-    font-family: goudymedievalregular;
+h1 .symbol {
+	margin: 1mm;
+	padding: 0;
+	float: left;
 }
 
 h2 {
     margin: 0;
     padding: 0;
-    font-family: goudymedievalregular;
 }
 
 .card {
-	width: 63mm;
-	height: 88mm;
+	width: 55mm;
+	height: 77mm;
 	position: relative;
 	overflow: hidden;
-	border-radius: 10px;
-	box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.28);
-	background: white;
-	margin: 10px;
-	float: left;
-	background-color: black;
+	margin: 0px;
+	background-color: transparent;
+	border-bottom: dashed thin black;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-content: start;
 }
 
 .symbol {
@@ -60,79 +58,10 @@ h2 {
     width: 0.95em;
     padding-left:0.3mm;
     padding-right: 0.3mm;
-       /* filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
+    filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=-1, OffY=1, Color='#000')";
     filter: url(#shadow);
     -webkit-filter: drop-shadow(-1px 1px #000);
-    filter: drop-shadow(-1px 1px #000); */
-}
-
-
-.frame {
-	width: 100%;
-	height:100%;
-	position: absolute;
-	top:0;
-	left:0;
-	padding: 3.5mm;
-	box-sizing: border-box;
-}
-
-.W .frame{
-	background-image: url('assets/frame_white.png');
-	background-size: contain;
-}
-
-.U .frame {
-	background-image: url('assets/frame_blue.png');
-	background-size: contain;
-}
-.B .frame{
-	background-image: url('assets/frame_black.png');
-	background-size: contain;
-}
-.R .frame {
-	background-image: url('assets/frame_red.png');
-	background-size: contain;
-}
-.G .frame {
-	background-image: url('assets/frame_green.png');
-	background-size: contain;
-}
-
-.Gold .frame {
-	background-image: url('assets/frame_gold.png');
-	background-size: contain;
-}
-
-.Artifact .frame {
-	background-image: url('assets/frame_artifact.png');
-	background-size: contain;
-}
-
-.Land .frame {
-	background-image: url('assets/frame_land_generic.png');
-	background-size: contain;
-}
-
-.LandW .frame {
-	background-image: url('assets/frame_land_white.png');
-	background-size: contain;
-}
-.LandU .frame {
-	background-image: url('assets/frame_land_blue.png');
-	background-size: contain;
-}
-.LandB .frame {
-	background-image: url('assets/frame_land_black.png');
-	background-size: contain;
-}
-.LandR .frame {
-	background-image: url('assets/frame_land_red.png');
-	background-size: contain;
-}
-.LandG .frame {
-	background-image: url('assets/frame_land_green.png');
-	background-size: contain;
+    filter: drop-shadow(-1px 1px #000);
 }
 
 span, h1, h2 {
@@ -140,116 +69,94 @@ span, h1, h2 {
     text-rendering: geometricPrecision;
 }
 
+.name-cost-flex {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: normal;
+	align-items: first baseline;
+	align-content: normal;
+}
+
 .name {
-	font-family: goudymedievalregular;
-	font-size: 3.3mm;
-	color: white;
-    text-shadow: 1px 1px 0px black;
-	position: absolute;
-	left: 7mm;
-	top: 4.1mm;
-	display: inline-block;
-	width: 51mm;
-	color: rgb(240, 240, 240);
-	letter-spacing: 0.22mm;
+	font-size: 4mm;
+	font-family: 'Courier Prime';
+	text-shadow: none;
+	max-width: 100vw;
+	width: 100%;
+	margin-top: 2mm;
+	margin-bottom: 1mm;
+	display: block;
+	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: auto;
+	align-self: auto;
+	order: 0;
 }
 
 .cost {
-	margin-top: 0.15mm;
-	float: right;
+	display: block;
+	flex-grow: 0;
+	flex-shrink: 1;
+	flex-basis: auto;
+	align-self: auto;
+	order: 1;
+	text-align: right;
 }
-.cost span {
-	margin-left: 0.2mm;
+
+.art {
+	width: 100%;
+	height: 0mm;
+	max-height: 40mm;
+	display: block;
+	flex-grow: 1;
+}
+
+.card:has(.hide) {
+	max-height: 77mm;
+	height: unset;
+}
+
+.hide {
+	display: none !important;
+}
+
+.diy .illustration{
+	background: none !important;
+	border: solid thin black;
+	box-sizing: border-box;
+}
+
+.diy .illus {
+	display: none;
 }
 
 .illustration {
-    position: absolute;
-    left:7.25mm;
-    top:8.23mm;
-    width: 49mm;
-    height: 39mm;
-	background-size: cover;
-    background: white;
+	width: 100%;
+	height: 100%;
+}
+
+.illus {
+	color: rgba(255, 255, 255,0.8);
+	font-size: 2.5mm;
+	text-shadow: 1px 1px 0px black;
+	position: absolute;
+	right: 0mm;
+	padding: 1mm;
 }
 
 .types {
-    color: white;
-    font-size: 3mm;
-    text-shadow: 1px 1px 0px black;
-    position: absolute;
-    top: 47.8mm;
-    left: 7mm;
-		color: rgb(240, 240, 240);
-}
-
-.set {
-    display: inline;
-    font-size: 3mm;
-
-    width: auto;
-		position: absolute;
-		top: 48.6mm;
-		right: 7mm;
-}
-.Common, .Basic {
+	font-size: 3mm;
+	font-style: italic;
 	color: black;
-	text-shadow: -0.2mm -0.2mm 0 white,
-				0 -0.2mm 0 white,
-				0.2mm -0.2mm 0 white,
-				0.2mm 0 0 white,
-				0.2mm 0.2mm 0 white,
-				0 0.2mm 0 white,
-				-0.2mm 0.2mm 0 white,
-				-0.2mm 0 0 white;
-}
-.Uncommon {
-	color: silver;
-	text-shadow: -0.2mm -0.2mm 0 #000,
-													0 -0.2mm 0 #000,
-													0.2mm -0.2mm 0 #000,
-													0.2mm 0 0 #000,
-													0.2mm 0.2mm 0 #000,
-													0 0.2mm 0 #000,
-													-0.2mm 0.2mm 0 #000,
-													-0.2mm 0 0 #000;
-}
-.Rare {
-	color: gold;
-	text-shadow: -0.2mm -0.2mm 0 #000,
-													0 -0.2mm 0 #000,
-													0.2mm -0.2mm 0 #000,
-													0.2mm 0 0 #000,
-													0.2mm 0.2mm 0 #000,
-													0 0.2mm 0 #000,
-													-0.2mm 0.2mm 0 #000,
-													-0.2mm 0 0 #000;
-}
-.Mythic {
-	color: orange !important;
-	text-shadow: -0.2mm -0.2mm 0 #000,
-													0 -0.2mm 0 #000,
-													0.2mm -0.2mm 0 #000,
-													0.2mm 0 0 #000,
-													0.2mm 0.2mm 0 #000,
-													0 0.2mm 0 #000,
-													-0.2mm 0.2mm 0 #000,
-													-0.2mm 0 0 #000;
-}
-
-
-.text_wrapper{
-    position: absolute;
-    top: 52.5mm;
-    width: 48mm;
-    height: 23.7mm;
-    left:7.2mm;
-    font-size: 8.5pt;
-    white-space:pre-wrap;
-    line-height: 9pt;
+	display: block;
+	margin-top: 2mm;
+	margin-bottom: 2mm;
 }
 
 .text {
-    vertical-align: middle;
+    font-size: 3mm;
+	margin-bottom: 3mm;
 }
 
 .flavor {
@@ -260,26 +167,17 @@ span, h1, h2 {
     width: 100%;
 }
 
-.illus {
-	color: rgba(230,230,230,1);
-	width: 48mm;
-	font-size: 2.5mm;
-	text-shadow: 1px 1px 0px black;
-	position: absolute;
-	bottom: 6.5mm;
-	left:6.8mm;
-	text-align: center;
-}
+
 
 .stats {
-    color: white;
+    color: black;
     font-size: 4mm;
-    text-shadow: 1px 1px 0px black;
+	font-style: italic;
     position: absolute;
-    bottom: 5.3mm;
-    right: 6mm;
-		font-weight: bold;
-		color: rgb(240, 240, 240);
+    bottom: 1mm;
+    right: 1mm;
+	font-weight: bold;
+	color: black;
 }
 
 em {
@@ -287,109 +185,14 @@ em {
 }
 
 hr {
-margin: 1pt;
-opacity: 0;
+	margin: 1pt;
+	opacity: 0;
 }
 
 .flavor hr {
    margin: 0;
 }
 
-
-.low-ink .illustration {
-    filter: grayscale(0) contrast(0.7) brightness(1.2);
-		border: 0.5mm silver inset;
-		box-sizing: border-box;
-}
-
-.low-ink .frame {
-	background: none;
-	outline: 0.5mm lightgray outset;
-	outline-offset: -3.3mm;
-}
-
-.low-ink span {
-	color: black !important;
-	text-shadow: none !important;
-
-}
-.low-ink {
-	background: white;
-	border: none;
-}
-
-.thermal-print .card {
-	width: 55mm;
-	height: auto;
-	position: relative;
-	overflow: hidden;
-	border-radius: 0px;
-	box-shadow: none;
-	margin: 0px;
-	background-color: transparent;
-}
-
-.thermal-print .card .frame {
-	background: none;
-	padding: 0;
-	position: unset;
-	height: auto;
-	padding-bottom: 5mm;
-	border-bottom: dashed thin black;
-	margin-bottom: 5mm;
-}
-
-.thermal-print .illustration {
-	float:none;
-	width: 55mm;
-	height: 40mm;
-	position: unset;
-}
-
-.thermal-print .frame .name {
-	font-size: 5mm;
-	font-family: 'Courier Prime';
-	left: 0;
-	top: 0;
-	text-shadow: none;
-	max-width: 100vw;
-	color: black;
-	width: 100%;
-	margin-top: 2mm;
-	position: static;
-	border-bottom: solid thin black;
-	letter-spacing: 0;
-	margin-bottom: 2mm;
-}
-
-.thermal-print .frame .types {
-	font-size: 4mm;
-	position: unset;
-	text-shadow: none;
-	color: black;
-}
-
-.thermal-print .frame .set {
-	display: none;
-}
-
-.thermal-print .frame .text_wrapper {
-	position: unset;
-	width: 100%;
-	margin-top: 2mm;
-	margin-bottom: 2mm;
-	margin-left: 0;
-	padding: 0;
-	-webkit-border-horizontal-spacing: 0;
-}
-
-.thermal-print .illus {
-	display: none;
-}
-
-.thermal-print .flavor {
-	display: none;
-}
 
 .thermal-print .stats {
 	text-shadow: none;
@@ -398,40 +201,4 @@ opacity: 0;
 	color: black;
 	font-weight: 100;
 	margin-bottom: 2mm;
-}
-
-body:has(> .thermal-print) {
-	max-width: 55mm;
-	background: white;
-	border: none;
-	font-family: 'Courier Prime';
-	margin: 0
-}
-
-@media print {
-    body {
-        background: white;
-        margin: -.2mm
-    }
-
-	.card {
-		box-shadow: none;
-		border: .1mm dashed gray;
-        border-radius: 0;
-        margin: -.1mm;
-        page-break-inside: avoid;
-	}
-
-
-	form {
-		display: none;
-	}
-}
-
-@page
-{
-    size: A4;   /* auto is the initial value */
-
-    /* this affects the margin in the printer settings */
-    margin: 0mm 0mm 0mm 0mm;
 }

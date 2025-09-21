@@ -32,14 +32,9 @@ function addCard(card, id) {
 
 	let illustration = '';
 	if (card.image_uris != undefined) {
-		illustration = '<div class="illustration" style="background-image: url(' + card.image_uris.art_crop + '); background-size:cover; background-position: top;"></div>'
+		illustration = '<div class="illustration" style="background-image: url(' + card.image_uris.art_crop + '); background-size:cover; background-position: center;"></div>'
 	} else if (card.imageName != undefined) {
-		illustration = '<div class="illustration" style="background-image: url(' + card.imageName + '); background-size:cover; background-position: top;"></div>'
-	};
-
-	let flavor = '';
-	if (card.flavor_text != undefined) {
-		flavor = '<span class="flavor">' + card.flavor_text + '</span>'
+		illustration = '<div class="illustration" style="background-image: url(' + card.imageName + '); background-size:cover; background-position: center;"></div>'
 	};
 
 	let cost = '';
@@ -60,9 +55,7 @@ function addCard(card, id) {
 
 	let text = '';
 	if (card.oracle_text != undefined) {
-		text = '<table class="text_wrapper"><td class="text"><span>' + card.oracle_text + '<br/>' + flavor + '</span></td></table>'
-	} else {
-		text = '<table class="text_wrapper"><td class="text">' + flavor + '</td></table>'
+		text = '<span class="text">' + card.oracle_text + '</span>'
 	}
 
 	let types = '';
@@ -72,7 +65,7 @@ function addCard(card, id) {
 
 	let name = '';
 	if (card.name != undefined) {
-		name = '<span class="name">' + card.name + cost + '</span>'
+		name = '<span class="name">' + card.name + '</span>'
 	}
 
 	let color = "Artifact";
@@ -90,9 +83,8 @@ function addCard(card, id) {
 			color = card.colors[0]
 		}
 	}
-	let setsymbol = '<span class="set ' + card.rarity + '"> <i class="ss ss-pmtg1"></i></span>'
 
-	let newHtml = ('<div class="card ' + color + '">' + illustration + '<div class="frame">' + name + types + setsymbol + text + illus + stats + '</div></div>');
+	let newHtml = ('<div class="card ' + color + '">' + '<div class="name-cost-flex">' + name + cost + '</div>' + '<div class="art">' + illus + illustration + '</div>' + types + text + stats + '</div>');
 	$('#cards').append(newHtml);
 	replaceInlineSymbol(/\{0}/g, '<img class="symbol" src="assets/symbols/0.svg"/>');
 	replaceInlineSymbol(/\{1}/g, '<img class="symbol" src="assets/symbols/1.svg"/>');
@@ -154,7 +146,7 @@ function addCard(card, id) {
 	replaceInlineSymbol(/\(/g, '<i>(');
 	replaceInlineSymbol(/\)/g, ')</i>');
 	replaceInlineSymbol(/\undefined/g, '');
-	replaceInlineSymbol(/\n/g, '<hr>');
+	replaceInlineSymbol(/\n/g, '<br>');
 }
 
 function replaceInlineSymbol(symbol, symbol_img) {
@@ -202,21 +194,24 @@ function dynamicTextHeight() {
 	}
 };
 
-function toggleLowInk() {
-	$("[name=lowInk]").change(function () {
+
+function toggleHideArt() {
+	$("[name=toggleArt]").change(function () {
 		if (this.checked) {
-			$(".card").addClass('low-ink');
+			$(".art").addClass('hide');
 		} else {
-			$('.low-ink').removeClass('low-ink');
+			$(".art").removeClass('hide');
 		};
 	})
 };
 
-function toggleThermalPrint() {
-	$("[name=thermalPrint]").change(function () {
+function toggleDIYArt() {
+	$("[name=toggleDIY]").change(function () {
 		if (this.checked) {
-			$("#cards").addClass('thermal-print');
-		}
+			$(".art").addClass('diy');
+		} else {
+			$(".art").removeClass('diy');
+		};
 	})
 };
 
