@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Fragment+Mono:ital@0;1&family=Instrument+Serif:ital@0;1&display=swap');
 
 body {
-	max-width: 55mm;
 	background: white;
 	border: none;
 	font-family: 'Courier Prime';
@@ -13,7 +12,7 @@ img {
     shape-rendering: crispEdges;
 }
 form {
-    max-width: 55mm;
+	width: 55mm;
 	border-bottom: dashed thin black;
 }
 form a {
@@ -43,7 +42,6 @@ h2 {
 	position: relative;
 	overflow: hidden;
 	margin: 0px;
-	background-color: transparent;
 	border-bottom: dashed thin black;
 	display: flex;
 	flex-direction: column;
@@ -64,10 +62,7 @@ h2 {
     filter: drop-shadow(-1px 1px #000);
 }
 
-span, h1, h2 {
-	box-sizing: inherit;
-    text-rendering: geometricPrecision;
-}
+
 
 .name-cost-flex {
 	display: flex;
@@ -82,7 +77,6 @@ span, h1, h2 {
 	font-size: 4mm;
 	font-family: 'Courier Prime';
 	text-shadow: none;
-	max-width: 100vw;
 	width: 100%;
 	margin-top: 2mm;
 	margin-bottom: 1mm;
@@ -191,14 +185,4 @@ hr {
 
 .flavor hr {
    margin: 0;
-}
-
-
-.thermal-print .stats {
-	text-shadow: none;
-	font-size: 5mm;
-	right:0mm;
-	color: black;
-	font-weight: 100;
-	margin-bottom: 2mm;
 }
