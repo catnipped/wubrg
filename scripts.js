@@ -1,69 +1,12 @@
-let carddata = new Object();
-let local = false;
-let page = 1;
-let hasmore = false;
-
-function toggleLocal() {
-	$("[name=local]").change(function () {
-		if (this.checked) {
-			$("[name=path]").val("file.json");
-			local = true;
-		} else {
-			$("[name=path]").val("t:shapeshifter+s:mh1");
-			local = false;
-		};
-	})
-}
-var urlHash = getUrlHash();
-function setUpPath() {
-	if (local) {
-		$("[name=local]").prop("checked", true);
-	}
-	if (urlHash != null) {
-		$("[name=path]").val(urlHash);
-	}
-}
-
-function generateUrl() {
-	var path = $('[name = path]').val()
-	var link = ""
-	if (!local) {
-		link = ('?' + path)
-	} else {
-		link = ('?l=' + path)
-	}
-	let domain = window.location.href;
-	if (domain.includes('?')) domain = window.location.href.slice(0, window.location.href.indexOf('?'));
-	window.location.href = domain + link;
-}
-
-function changePage(set, changeInt) {
-	page += changeInt;
-	if (page == 0) {
-		page = 1
-	}
-	renderCards(set)
-	if (page == 1) {
-		$("#previousPage").addClass('.hide');
-	} else {
-		$("#previousPage").removeClass('.hide');
-	}
-	if (!hasmore) {
-		$("#nextPage").addClass('.hide');
-	} else {
-		$("#nextPage").removeClass('.hide');
-	}
-}
+let carddata = new Array();
 
 function renderCards() {
-	if (local) {
-		$.getJSON(urlHash, function (json) {
-			carddata = json.cards;
-			showAllCards();
-		});
-	} else {
-		let url = 'https://api.scryfall.com/cards/search?q=' + urlHash;
-		fetchCardData(url)
+	carddata = []
+	let input = $('[name = path]').val();
+	let card_queries = input.split(';');
+	for (const path of card_queries) {
+		let url = 'https://api.scryfall.com/cards/named?fuzzy=' + path.replace(' ', '+')
+		setTimeout(fetchCardData(url), 100)
 	}
 }
 
@@ -75,10 +18,9 @@ function fetchCardData(url) {
 	request.open('GET', url, true)
 
 	request.onload = function () {
-		cards = JSON.parse(this.response);
-		console.log(cards)
-		hasmore = cards.hasmore;
-		carddata = cards.data
+		card = JSON.parse(this.response);
+		console.log(card)
+		carddata.push(card)
 		showAllCards();
 	}
 
@@ -86,17 +28,7 @@ function fetchCardData(url) {
 	request.send()
 };
 
-function addCard(id) {
-	let cardnr = undefined;
-	// for (let i = 0; i < (carddata.size - 1) ; i++) {
-	//     if (carddata.records[i].id == id || carddata.records[i].name == id || carddata.records[i].name_canonical == id) {
-	//         cardnr = i;
-	//         break;
-	//     };
-	// };
-
-	let card = carddata[id];
-	console.log(card);
+function addCard(card, id) {
 
 	let illustration = '';
 	if (card.image_uris != undefined) {
@@ -248,7 +180,7 @@ function submitCards() {
 function showAllCards() {
 	$('#cards').empty()
 	for (let i = 0; i < (carddata.length); i++) {
-		addCard(i);
+		addCard(carddata[i], i);
 		dynamicTextHeight(i);
 	};
 }
@@ -331,11 +263,6 @@ function getUrlHash() {
 	if (!window.location.href.includes('?')) return null;
 	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1);
 
-	if (hashes.includes("l=")) {
-		local = true
-		console.log("slashing hash")
-		hashes = hashes.slice(2)
-	}
 	console.log(hashes);
 	return hashes;
 }

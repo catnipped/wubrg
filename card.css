@@ -378,17 +378,17 @@ opacity: 0;
 	width: 100%;
 	margin-top: 2mm;
 	margin-bottom: 2mm;
+	margin-left: 0;
+	padding: 0;
+	-webkit-border-horizontal-spacing: 0;
 }
-.thermal-print .text span {
-	font-size: 3.5mm !important;
-	line-height: 3.5mm !important;
-}
+
 .thermal-print .illus {
 	display: none;
 }
 
 .thermal-print .flavor {
-	color: gray;
+	display: none;
 }
 
 .thermal-print .stats {
