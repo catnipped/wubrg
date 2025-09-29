@@ -62,12 +62,13 @@ h2 {
     filter: drop-shadow(-1px 1px #000);
 }
 
-
+.text i {
+	display: none;
+}
 
 .name-cost-flex {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: nowrap;
 	justify-content: normal;
 	align-items: first baseline;
 	align-content: normal;
@@ -78,12 +79,12 @@ h2 {
 	font-family: 'Courier Prime';
 	text-shadow: none;
 	width: 100%;
-	margin-top: 2mm;
-	margin-bottom: 1mm;
+	margin-top: 1mm;
+	margin-bottom: 0;
 	display: block;
 	flex-grow: 1;
 	flex-shrink: 1;
-	flex-basis: auto;
+	flex-basis: content;
 	align-self: auto;
 	order: 0;
 }
@@ -92,10 +93,11 @@ h2 {
 	display: block;
 	flex-grow: 0;
 	flex-shrink: 1;
-	flex-basis: auto;
+	flex-basis: content;
 	align-self: auto;
 	order: 1;
 	text-align: right;
+	font-size: smaller;
 }
 
 .art {
@@ -104,6 +106,8 @@ h2 {
 	max-height: 40mm;
 	display: block;
 	flex-grow: 1;
+	flex-shrink: 1;
+	flex-basis: 40mm;
 }
 
 .card:has(.hide) {
@@ -142,15 +146,15 @@ h2 {
 .types {
 	font-size: 3mm;
 	font-style: italic;
-	color: black;
+	color: white;
 	display: block;
-	margin-top: 2mm;
-	margin-bottom: 2mm;
+	background-color: black;
 }
 
 .text {
     font-size: 3mm;
 	margin-bottom: 3mm;
+	margin-top: 1mm;
 }
 
 .flavor {
@@ -161,17 +165,12 @@ h2 {
     width: 100%;
 }
 
-
-
 .stats {
     color: black;
     font-size: 4mm;
-	font-style: italic;
     position: absolute;
     bottom: 1mm;
     right: 1mm;
-	font-weight: bold;
-	color: black;
 }
 
 em {
@@ -185,4 +184,120 @@ hr {
 
 .flavor hr {
    margin: 0;
+}
+
+.vertical-layout {
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 1;
+	flex-grow: 1;
+	flex-basis: auto;
+}
+
+.vertical-layout .text {
+	flex-grow: 1;
+	flex-basis: auto;
+	margin-right: 1mm;
+}
+.vertical-layout .art {
+	flex-shrink: 0.2;
+	max-height: unset;
+	height: 100%;
+	max-width: 20mm;
+}
+.vertical-layout .illus {
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+}
+
+.adventure-layout {
+	display: flex;
+	flex-direction: row;
+	flex-basis: auto;
+	flex-grow: 1;
+	flex-shrink: 1;
+}
+
+.adventure {
+	min-width: 45%;
+	background-color: rgb(238, 238, 238);
+	font-size: smaller;
+	width: auto;
+	max-width: 60%;
+	border-right: thin solid black;
+}
+.adventure .name {
+	font-size:small;
+}
+
+.adventure .text {
+	font-size: x-small;
+}
+
+.adventure .cost {
+	flex-shrink: 0;
+}
+
+.non-adventure {
+	margin: 1mm
+}
+
+.flipped {
+	transform: rotate(180deg);
+}
+
+.flipped .stats {
+	position: unset;
+	float: right;
+}
+
+.non-flipped .stats {
+	position: unset;
+	float: right;
+}
+
+.battle {
+	height: 55mm;
+	width: 77mm;
+	-webkit-transform: translateY(-100%) rotate(90deg); /* Safari */
+    -moz-transform: translateY(-100%) rotate(90deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) rotate(90deg); /* IE9 */
+    -o-transform: translateY(-100%) rotate(90deg); /* Opera */
+    transform: translateY(-100%) rotate(90deg); /* W3C */
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+	padding-left:1mm;
+	padding-right: 1mm;
+	box-sizing: border-box;
+	margin-bottom: 22mm;
+	border-bottom:none;
+	border-right: thin dashed black;
+}
+
+.dfc_info {
+	background-color: black;
+	color:white;
+	width:fit-content;
+	font-size: 3mm;
+	padding-right: 1mm;
+	padding-left: 0.3mm;
+	border-radius: 1mm 0 0 1mm;
+	margin-bottom: 1mm;
+	margin-left: 1.5mm;
+	font-style: italic;
+}
+.dfc_info:before {
+	border: solid transparent;
+	content: "";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-right-color: #000000;
+	border-width: 1.9mm;
+	margin-left: -3.4mm;
 }
