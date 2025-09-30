@@ -276,6 +276,7 @@ hr {
 	padding-right: 1mm;
 	box-sizing: border-box;
 	margin-bottom: 22mm;
+	margin-right: -22mm;
 	border-bottom:none;
 	border-right: thin dashed black;
 }
@@ -325,6 +326,7 @@ hr {
 	padding-right: 1mm;
 	box-sizing: border-box;
 	margin-bottom: 22mm;
+	margin-right: -22mm;
 	border-bottom:none;
 	border-right: thin dashed black;
 }
@@ -358,4 +360,27 @@ hr {
 
 .Room .types:first-of-type {
 	display: none;
+}
+
+@media print {
+  form {
+	display: none;
+  }
+  .card {
+	float: left;
+	border: thin dashed gray;
+	width: 60mm;
+	height: 85mm;
+	padding:2mm;
+	box-sizing: border-box;
+  }
+  .illus {
+	right: 2mm;
+  }
+  .battle, .split {
+	height: 60mm;
+	width: 85mm;
+	margin-bottom: 25mm;
+	margin-right: -25mm;
+  }
 }
