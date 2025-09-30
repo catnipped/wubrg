@@ -6,6 +6,13 @@ function renderCards() {
 	let card_queries = input.split(';');
 	for (const path of card_queries) {
 		let url = 'https://api.scryfall.com/cards/named?fuzzy=' + path.replace(' ', '+')
+		if (path.includes('|')) {
+			let query_split = path.split('|')
+			let name = query_split[0].replace(' ', '+')
+			let set = query_split[1]
+			url = 'https://api.scryfall.com/cards/named?set='+ set +'&fuzzy=' + name
+			console.log(url)
+		}
 		setTimeout(fetchCardData(url), 100)
 	}
 }

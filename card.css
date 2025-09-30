@@ -15,6 +15,9 @@ form {
 	width: 55mm;
 	border-bottom: dashed thin black;
 }
+form span {
+	font-size: smaller;
+}
 form a {
 	text-decoration: underline;
 	color: blue;
