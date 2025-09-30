@@ -44,7 +44,41 @@ function addCard(card_object, id) {
 			card_faces.push(card_object)
 			break;
 	}
-	if (card_object.layout == "flip") {
+	if (card_object.layout == "split") {
+		let left_card = card_faces[0]
+		let right_card = card_faces[1]
+		let illustration = '';
+		if (card_object.image_uris != undefined) {
+			illustration = '<div class="illustration" style="background-image: url(' + card_object.image_uris.art_crop + '); background-size:cover; background-position: center;"></div>'
+		} else if (card_object.imageName != undefined) {
+			illustration = '<div class="illustration" style="background-image: url(' + card_object.imageName + '); background-size:cover; background-position: center;"></div>'
+		};
+		let illus = '';
+		if (card_object.artist != undefined) {
+			illus = '<span class="illus">' + card_object.artist + '</span>'
+		}
+
+		let cost_left = '<span class="cost">' + left_card.mana_cost + '</span>'
+		let cost_right = '<span class="cost">' + right_card.mana_cost + '</span>'
+
+		let text_left = '<span class="text">' + left_card.oracle_text + '</span>'
+		let text_right = '<span class="text">' + right_card.oracle_text + '</span>'
+
+		let types_left = '<span class="types">' + left_card.type_line + '</span>'
+		let types_right = '<span class="types">' + right_card.type_line + '</span>'
+
+		let name_left = '<span class="name">' + left_card.name + '</span>'
+		let name_right = '<span class="name">' + right_card.name + '</span>'
+
+		let special_class= ''
+			if (card_object.type_line.includes('Room')) {
+				special_class= 'Room'
+			}
+
+		var newHtml = '<div class="card split '+special_class+'"><div class="split-row"><div class="name-cost-flex">' + name_left + cost_left + '</div><div class="name-cost-flex">' + name_right + cost_right + '</div></div><div class="art">' + illus + illustration + '</div><div class="split-row">' + types_left + types_right + '</div><div class="split-row">'+ text_left + text_right + '</div></div></div>';
+		$('#cards').append(newHtml);
+		replaceSymbols()
+	} else if (card_object.layout == "flip") {
 		let card = card_faces[0]
 		console.log(card)
 		let illustration = '';
@@ -66,7 +100,7 @@ function addCard(card_object, id) {
 
 		let illus = '';
 		if (card.artist != undefined) {
-			illus = '<span class="illus">Illus. ' + card.artist + '</span>'
+			illus = '<span class="illus">' + card.artist + '</span>'
 		}
 
 		let text = '';
@@ -115,7 +149,7 @@ function addCard(card_object, id) {
 
 		let illus = '';
 		if (card.artist != undefined) {
-			illus = '<span class="illus">Illus. ' + adventure_card.artist + '</span>'
+			illus = '<span class="illus">' + adventure_card.artist + '</span>'
 		}
 
 		let text = '';
@@ -167,25 +201,25 @@ function addCard(card_object, id) {
 			}
 			let illus = '';
 			if (card.artist != undefined) {
-				illus = '<span class="illus">Illus. ' + card.artist + '</span>'
+				illus = '<span class="illus">' + card.artist + '</span>'
 			}
 			let dfc_info =''
 			if (i == 0 && card_faces.length == 2) {
 				let dfc_mana_cost = ''
 				if (card_faces[1].mana_cost != undefined) {
-					dfc_mana_cost = card_faces[1].mana_cost + ' '
+					dfc_mana_cost = card_faces[1].mana_cost
 				}
 				let dfc_stats = ''
 				if (card_faces[1].power != undefined) {
-					dfc_stats = card_faces[1].power + '/' + card_faces[1].toughness
+					dfc_stats = ' ' + card_faces[1].power + '/' + card_faces[1].toughness
 				}
-				dfc_type_line = card_faces[1].type_line.split('—')
+				dfc_type_line = card_faces[1].type_line.split('—',1)
 				let dfc_type = dfc_type_line[0]
-				dfc_info = '<span class="dfc_info">'+ dfc_mana_cost + dfc_type_line + dfc_stats +'</span>'
+				dfc_info = '<br><span class="dfc_info">'+ dfc_mana_cost + dfc_type_line + dfc_stats +'</span>'
 			}
 			let text = '';
 			if (card.oracle_text != undefined) {
-				text = '<span class="text">' + card.oracle_text + '</span>'
+				text = '<span class="text">' + card.oracle_text + dfc_info + '</span>'
 			}
 
 			let types = '';
@@ -201,7 +235,7 @@ function addCard(card_object, id) {
 			if (card_object.type_line.includes('Battle')) {
 				special_class= 'battle'
 			}
-			var newHtml = '<div class="card '+special_class+'">' + '<div class="name-cost-flex">' + name + cost + '</div>' + '<div class="art">' + illus + illustration + '</div>' + types + text + stats + dfc_info + '</div>';
+			var newHtml = '<div class="card '+special_class+'">' + '<div class="name-cost-flex">' + name + cost + '</div>' + '<div class="art">' + illus + illustration + '</div>' + types + text + stats + '</div>';
 			if ( card.type_line.includes('Saga') || card.type_line.includes('Class') || card.type_line.includes('Case') ) {
 				newHtml = '<div class="card">' + '<div class="name-cost-flex">' + name + cost + '</div><div class="vertical-layout">' + text + '<div class="art">' + illus + illustration + '</div></div>' + types + '</div>';
 			};
@@ -273,6 +307,7 @@ function replaceSymbols() {
 		replaceInlineSymbol(/\)/g, ')</i>');
 		replaceInlineSymbol(/\undefined/g, '');
 		replaceInlineSymbol(/\n/g, '<br>');
+		replaceInlineSymbol('Legendary', 'Leg.');
 }
 
 function replaceInlineSymbol(symbol, symbol_img) {

@@ -148,6 +148,7 @@ h2 {
 	font-style: italic;
 	color: white;
 	display: block;
+	padding-left: 1mm;
 	background-color: black;
 }
 
@@ -192,6 +193,7 @@ hr {
 	flex-shrink: 1;
 	flex-grow: 1;
 	flex-basis: auto;
+	border-top: thin solid black;
 }
 
 .vertical-layout .text {
@@ -281,11 +283,14 @@ hr {
 .dfc_info {
 	background-color: black;
 	color:white;
-	width:fit-content;
+	width: fit-content;
+	height: fit-content;
 	font-size: 3mm;
+	display: inline-block;
 	padding-right: 1mm;
 	padding-left: 0.3mm;
 	border-radius: 1mm 0 0 1mm;
+	margin-top: 1mm;
 	margin-bottom: 1mm;
 	margin-left: 1.5mm;
 	font-style: italic;
@@ -300,4 +305,57 @@ hr {
 	border-right-color: #000000;
 	border-width: 1.9mm;
 	margin-left: -3.4mm;
+}
+
+.split {
+	height: 55mm;
+	width: 77mm;
+	-webkit-transform: translateY(-100%) rotate(90deg); /* Safari */
+    -moz-transform: translateY(-100%) rotate(90deg); /* Firefox 3.6 Firefox 4 */
+    /*-moz-transform-origin: right top; */
+    -ms-transform: translateY(-100%) rotate(90deg); /* IE9 */
+    -o-transform: translateY(-100%) rotate(90deg); /* Opera */
+    transform: translateY(-100%) rotate(90deg); /* W3C */
+    -webkit-transform-origin: left bottom;
+    -moz-transform-origin: left bottom;
+    -ms-transform-origin: left bottom;
+    -o-transform-origin: left bottom;
+    transform-origin: left bottom;
+	padding-left:1mm;
+	padding-right: 1mm;
+	box-sizing: border-box;
+	margin-bottom: 22mm;
+	border-bottom:none;
+	border-right: thin dashed black;
+}
+
+.split .illus {
+	right:unset;
+}
+.split .name {
+	font-size: small;
+}
+.split-row {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.split-row .text:first-child, .split-row .name-cost-flex:first-child {
+	padding-right: 1mm;
+}
+.split-row .text:last-child, .split-row .name-cost-flex:last-child {
+	border-left: thin solid black;
+	padding-left: 1mm;
+}
+.split-row div {
+	width: 50%;
+}
+.split-row span {
+	display: block;
+	width: 50%;
+	flex-grow: 1;
+}
+
+.Room .types:first-of-type {
+	display: none;
 }
